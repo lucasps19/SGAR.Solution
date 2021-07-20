@@ -1,4 +1,5 @@
 ﻿using SGAR.Dal.Login;
+using SGAR.Dto.Pessoa;
 using System;
 
 namespace SGAR.Bll.Login
@@ -12,9 +13,27 @@ namespace SGAR.Bll.Login
             _loginDal = loginDal;
         }
 
-        //public string EfetuarLogin(string cpf, string senha)
-        //{
-            
-        //}
+        public string EfetuarLogin(string cpf, string senha)
+        {
+            PessoaDTO pessoa = _loginDal.ObterPessoa(cpf);
+
+            string senhaUsuario = pessoa.Senha;
+
+            try
+            {
+                if (senhaUsuario == senha)
+                {
+                    return "Sucesso";
+                }
+                else
+                {
+                    throw new Exception(message: "Usuário ou Senha incorreto!");
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

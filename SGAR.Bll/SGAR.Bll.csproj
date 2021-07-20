@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SGAR.Dal\SGAR.Dal.csproj" />
+    <ProjectReference Include="..\SGAR.Dto\SGAR.Dto.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-
-namespace SGAR.Dto.Pessoa
+﻿namespace SGAR.Dto.Pessoa
 {
     public class PessoaDTO
     {
