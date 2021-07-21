@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SGAR.Bll.Login;
 using SGAR.Dal.Login;
+using SGAR.Dto.Pessoa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace SGAR.Solution
         {
             services.AddScoped<LoginBll>();
             services.AddScoped<LoginDal>();
+            services.AddScoped<PessoaDTO>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
