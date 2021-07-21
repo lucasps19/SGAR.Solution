@@ -6,7 +6,7 @@
         {
         }
 
-        public int Matricula { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string CPF { get; set; }
@@ -15,7 +15,15 @@
 
         public static implicit operator PessoaDTO(Model.Models.Pessoa pessoa)
         {
-            return new PessoaDTO { CPF = pessoa.CPF, Email = pessoa.Email };
+            return new PessoaDTO
+            {
+                Id = pessoa.Id,
+                Nome = pessoa.Nome,
+                Email = pessoa.Email,
+                CPF = pessoa.CPF,
+                Senha = pessoa.Senha,
+                Empresa = pessoa.IdEmpresa
+            };
         }
 
     }
