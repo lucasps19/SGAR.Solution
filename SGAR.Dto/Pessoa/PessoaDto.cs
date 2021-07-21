@@ -13,5 +13,10 @@
         public string Senha { get; set; }
         public int Empresa { get; set; }
 
+        public static implicit operator PessoaDTO(Model.Models.Pessoa pessoa)
+        {
+            return new PessoaDTO { CPF = pessoa.CPF, Email = pessoa.Email };
+        }
+
     }
 }

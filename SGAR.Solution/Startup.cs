@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SGAR.Bll.Login;
+using SGAR.Dal.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,8 @@ namespace SGAR.Solution
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<LoginBll>();
+            services.AddScoped<LoginDal>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -6,7 +6,7 @@ namespace SGAR.Dal.Login
 {
     public class LoginDal
     {
-        private Contexto _contexto;
+        private readonly Contexto _contexto;
 
         public LoginDal(Contexto contexto)
         {
