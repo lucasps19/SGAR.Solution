@@ -8,7 +8,7 @@ namespace SGAR.Model.Contexto
 {
     public class Contexto : DbContext
     {
-        public Contexto(string cnnStr) : base(cnnStr)
+        public Contexto() : base(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")
         {
         }
 

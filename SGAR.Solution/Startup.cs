@@ -33,7 +33,7 @@ namespace SGAR.Solution
             services.AddScoped<LoginBll>();
             services.AddScoped<LoginDal>();
             services.AddScoped<PessoaDTO>();
-            services.AddScoped<Contexto>(/*o => new Contexto(Configuration.GetConnectionString())*/);
+            services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

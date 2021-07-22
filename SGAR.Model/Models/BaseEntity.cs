@@ -6,6 +6,5 @@ namespace SGAR.Model.Models
     {
         [Key]
         public int Id { get; set; }
-        public bool Removido { get; set; }
     }
 }
