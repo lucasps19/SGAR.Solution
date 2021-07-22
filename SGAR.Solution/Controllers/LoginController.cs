@@ -15,12 +15,6 @@ namespace SGAR.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult EfetuarLogin()
-        {
-            return null;
-        }
-
-        [HttpGet]
         [Route("/EfetuarLogin")]
         public ActionResult EfetuarLogin(string cpf, string senha)
         {
@@ -28,10 +22,10 @@ namespace SGAR.WebApi.Controllers
             {
                 var retorno = _loginBll.EfetuarLogin(cpf, senha);
 
-                return RedirectToAction("PaginaInicial");
+                return Ok();
             }
 
-            return RedirectToAction("Login");
+            return BadRequest();
         }
     }
 }

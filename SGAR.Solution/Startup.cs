@@ -33,7 +33,7 @@ namespace SGAR.Solution
             services.AddScoped<LoginBll>();
             services.AddScoped<LoginDal>();
             services.AddScoped<PessoaDTO>();
-            services.AddScoped<Contexto>(o => new Contexto(Configuration.GetConnectionString()));
+            services.AddScoped<Contexto>(/*o => new Contexto(Configuration.GetConnectionString())*/);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

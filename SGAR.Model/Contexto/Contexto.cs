@@ -8,7 +8,7 @@ namespace SGAR.Model.Contexto
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base()
+        public Contexto(string cnnStr) : base(cnnStr)
         {
         }
 

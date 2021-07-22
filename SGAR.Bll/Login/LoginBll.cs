@@ -30,9 +30,9 @@ namespace SGAR.Bll.Login
                     throw new Exception(message: "Usuário ou Senha incorreto!");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                return ex.Message;
             }
         }
     }
