@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-//using SGAR.Bll.Login;
+using SGAR.Bll.Login;
 
 namespace SGAR.WebApi.Controllers
 {
@@ -7,7 +7,12 @@ namespace SGAR.WebApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        //private readonly LoginBll _loginBll;
+        private readonly LoginBll _loginBll;
+
+        public LoginController(LoginBll loginBll)
+        {
+            _loginBll = loginBll;
+        }
 
         [HttpGet]
         public ActionResult EfetuarLogin()
@@ -21,7 +26,7 @@ namespace SGAR.WebApi.Controllers
         {
             if (!string.IsNullOrEmpty(cpf) && !string.IsNullOrEmpty(senha))
             {
-                //var retorno = _loginBll.EfetuarLogin(cpf, senha);
+                var retorno = _loginBll.EfetuarLogin(cpf, senha);
 
                 return RedirectToAction("PaginaInicial");
             }
