@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.Login;
+using SGAR.WebApi.ViewModel.Pessoa;
 
 namespace SGAR.WebApi.Controllers
 {
@@ -16,13 +17,13 @@ namespace SGAR.WebApi.Controllers
 
         [HttpGet]
         [Route("/EfetuarLogin")]
-        public ActionResult EfetuarLogin(string cpf, string senha)
+        public ActionResult<PessoaViewModel> EfetuarLogin(string cpf, string senha)
         {
             if (!string.IsNullOrEmpty(cpf) && !string.IsNullOrEmpty(senha))
             {
-                var retorno = _loginBll.EfetuarLogin(cpf, senha);
+                PessoaViewModel retorno = _loginBll.EfetuarLogin(cpf, senha);
 
-                return Ok();
+                return retorno;
             }
 
             return BadRequest();

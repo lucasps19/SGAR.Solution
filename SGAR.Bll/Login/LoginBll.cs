@@ -13,7 +13,7 @@ namespace SGAR.Bll.Login
             _loginDal = loginDal;
         }
 
-        public string EfetuarLogin(string cpf, string senha)
+        public PessoaDTO EfetuarLogin(string cpf, string senha)
         {
             PessoaDTO pessoa = _loginDal.ObterPessoa(cpf);
 
@@ -23,16 +23,16 @@ namespace SGAR.Bll.Login
             {
                 if (senhaUsuario == senha)
                 {
-                    return "Sucesso";
+                    return pessoa;
                 }
                 else
                 {
                     throw new Exception(message: "Usuário ou Senha incorreto!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)// ex)
             {
-                return ex.Message;
+                return null;// ex.Message;
             }
         }
     }
