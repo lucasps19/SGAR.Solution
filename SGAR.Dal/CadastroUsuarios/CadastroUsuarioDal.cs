@@ -1,6 +1,6 @@
 ﻿using SGAR.Model.Contexto;
 
-namespace SGAR.Dal.Cadastro_de_Usuarios
+namespace SGAR.Dal.CadastroUsuarios
 {
     public class CadastroUsuarioDal
     {

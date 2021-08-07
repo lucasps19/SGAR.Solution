@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SGAR.Bll.Cadastro_de_Usuarios
+namespace SGAR.Bll.CadastroUsuarios
 {
     public class CadastroUsuarioBll
     {
