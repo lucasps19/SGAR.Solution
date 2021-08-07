@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SGAR.Bll.CadastroUsuarios;
 using SGAR.Bll.Login;
+using SGAR.Dal.CadastroUsuarios;
 using SGAR.Dal.Login;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Contexto;
@@ -31,7 +33,9 @@ namespace SGAR.Solution
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<LoginBll>();
+            services.AddScoped<CadastroUsuarioBll>();
             services.AddScoped<LoginDal>();
+            services.AddScoped<CadastroUsuarioDal>();
             services.AddScoped<PessoaDTO>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
