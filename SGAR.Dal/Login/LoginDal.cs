@@ -1,5 +1,6 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
+using System;
 using System.Linq;
 
 namespace SGAR.Dal.Login
@@ -17,7 +18,14 @@ namespace SGAR.Dal.Login
         {
             Pessoa pessoa = _contexto.Pessoas.Where(o => o.CPF == cpf).FirstOrDefault();
 
-            return pessoa;
+            if(pessoa != null)
+            {
+                return pessoa;
+            }
+            else
+            {
+                throw new Exception(message: "Usuário não encontrado!");
+            }
         }
     }
 }

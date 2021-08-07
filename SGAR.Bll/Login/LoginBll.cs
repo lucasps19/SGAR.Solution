@@ -19,20 +19,13 @@ namespace SGAR.Bll.Login
 
             string senhaUsuario = pessoa.Senha;
 
-            try
+            if (senhaUsuario == senha)
             {
-                if (senhaUsuario == senha)
-                {
-                    return pessoa;
-                }
-                else
-                {
-                    throw new Exception(message: "Usuário ou Senha incorreto!");
-                }
+                return pessoa;
             }
-            catch (Exception)// ex)
+            else
             {
-                return null;// ex.Message;
+                throw new Exception(message: "Usuário ou Senha incorreto!");
             }
         }
     }
