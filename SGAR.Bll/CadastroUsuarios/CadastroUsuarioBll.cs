@@ -14,7 +14,7 @@ namespace SGAR.Bll.CadastroUsuarios
             _cadastroUsuarioDal = cadastroUsuarioDal;
         }
 
-        public void CadastrarUsuario (PessoaDTO pessoa)
+        public void CadastrarUsuario(PessoaDTO pessoa)
         {
             if (_cadastroUsuarioDal.VerificarCpfJaCadastrado(pessoa.CPF))
             {
