@@ -24,7 +24,7 @@ namespace SGAR.Bll.CadastroUsuarios
             pessoa.Senha = senha;
             pessoa.Empresa = idEmpresa;
 
-            pessoa.Id = 3;
+            //pessoa.Id = 3;
 
             _cadastroUsuarioDal.CadastrarUsuario(pessoa);
         }

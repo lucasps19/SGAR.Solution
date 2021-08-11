@@ -32,10 +32,10 @@ namespace SGAR.WebApi.Controllers
                 }
                 catch(Exception ex)
                 {
-                    return Ok(ex.Message);
+                    return Unauthorized(ex.Message);
                 }
             }
-            return Ok("Existem campos obrigatórios não preenchidos!");
+            return Unauthorized("Existem campos obrigatórios não preenchidos!");
         }
     }
 }
