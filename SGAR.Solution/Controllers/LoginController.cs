@@ -20,13 +20,11 @@ namespace SGAR.WebApi.Controllers
         [Route("/EfetuarLogin")]
         public ActionResult<PessoaViewModel> EfetuarLogin(string cpf, string senha)
         {
-            PessoaViewModel retorno = new PessoaViewModel();
-
             if (!string.IsNullOrEmpty(cpf) && !string.IsNullOrEmpty(senha))
             {
                 try
                 {
-                    retorno = _loginBll.EfetuarLogin(cpf, senha);
+                    PessoaViewModel retorno = _loginBll.EfetuarLogin(cpf, senha);
 
                     return retorno;
                 }

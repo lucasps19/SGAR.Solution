@@ -23,13 +23,14 @@ namespace SGAR.WebApi.Controllers
         {
             if (!string.IsNullOrEmpty(pessoa.Nome) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Senha) || pessoa.Empresa != 0)
             {
-                PessoaDTO dados = new PessoaDTO();
-
-                dados.Nome = pessoa.Nome.ToUpper();
-                dados.Email = pessoa.Email;
-                dados.CPF = pessoa.CPF;
-                dados.Senha = pessoa.Senha;
-                dados.Empresa = pessoa.Empresa;
+                PessoaDTO dados = new()
+                {
+                    Nome = pessoa.Nome.ToUpper(),
+                    Email = pessoa.Email,
+                    CPF = pessoa.CPF,
+                    Senha = pessoa.Senha,
+                    Empresa = pessoa.Empresa
+                };
 
                 try
                 {
