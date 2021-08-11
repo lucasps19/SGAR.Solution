@@ -16,9 +16,12 @@ namespace SGAR.Bll.CadastroUsuarios
 
         public void CadastrarUsuario (PessoaDTO pessoa)
         {
-            if (_cadastroUsuarioDal.VerificarEmailJaCadastrado(pessoa.Email))
+            if (_cadastroUsuarioDal.VerificarCpfJaCadastrado(pessoa.CPF))
             {
-                _cadastroUsuarioDal.CadastrarUsuario(pessoa);
+                if (_cadastroUsuarioDal.VerificarEmailJaCadastrado(pessoa.Email))
+                {
+                    _cadastroUsuarioDal.CadastrarUsuario(pessoa);
+                }
             }
         }
     }
