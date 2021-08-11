@@ -1,5 +1,6 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
+using System;
 using System.Linq;
 
 namespace SGAR.Dal.CadastroUsuarios
@@ -20,9 +21,18 @@ namespace SGAR.Dal.CadastroUsuarios
             _contexto.SaveChanges();
         }
 
-        //public int BuscaProximoIdPessoa()
-        //{
-        //    return null;
-        //}
+        public bool VerificarEmailJaCadastrado(string email)
+        {
+            var resposta = _contexto.Pessoas.Where(o => o.Email == email).FirstOrDefault();
+
+            if (string.IsNullOrEmpty(resposta.ToString()))
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception(message: "Esse email ja esta cadastrado, favor utilizar outro email");
+            }
+        }
     }
 }

@@ -14,19 +14,12 @@ namespace SGAR.Bll.CadastroUsuarios
             _cadastroUsuarioDal = cadastroUsuarioDal;
         }
 
-        public void CadastrarUsuario (string nome, string email, string cpf, string senha, int idEmpresa)
+        public void CadastrarUsuario (PessoaDTO pessoa)
         {
-            PessoaDTO pessoa = new PessoaDTO();
-
-            pessoa.Nome = nome;
-            pessoa.Email = email;
-            pessoa.CPF = cpf;
-            pessoa.Senha = senha;
-            pessoa.Empresa = idEmpresa;
-
-            //pessoa.Id = 3;
-
-            _cadastroUsuarioDal.CadastrarUsuario(pessoa);
+            if (_cadastroUsuarioDal.VerificarEmailJaCadastrado(pessoa.Email))
+            {
+                _cadastroUsuarioDal.CadastrarUsuario(pessoa);
+            }
         }
     }
 }

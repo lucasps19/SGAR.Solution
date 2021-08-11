@@ -19,22 +19,30 @@ namespace SGAR.WebApi.Controllers
 
         [HttpPost]
         [Route("/CadastrarUsuario")]
-        public ActionResult CadastrarUsuario(string nome, string email, string cpf, string senha, int idEmpresa = 0)
+        public ActionResult CadastrarUsuario(PessoaViewModel pessoa)
         {
-            if (!string.IsNullOrEmpty(nome) || !string.IsNullOrEmpty(email) || !string.IsNullOrEmpty(cpf) || !string.IsNullOrEmpty(senha) || idEmpresa != 0)
+            if (!string.IsNullOrEmpty(pessoa.Nome) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Senha) || pessoa.Empresa != 0)
             {
+                PessoaDTO dados = new PessoaDTO();
+
+                dados.Nome = pessoa.Nome.ToUpper();
+                dados.Email = pessoa.Email;
+                dados.CPF = pessoa.CPF;
+                dados.Senha = pessoa.Senha;
+                dados.Empresa = pessoa.Empresa;
+
                 try
                 {
-                    _cadastroUsuarioBll.CadastrarUsuario(nome, email, cpf, senha, idEmpresa);
+                    _cadastroUsuarioBll.CadastrarUsuario(dados);
 
                     return Ok("Cadastro efetuado com sucesso");
                 }
                 catch(Exception ex)
                 {
-                    return Ok(ex.Message);
+                    return Unauthorized(ex.Message);
                 }
             }
-            return Ok("Existem campos obrigatórios não preenchidos!");
+            return Unauthorized("Existem campos obrigatórios não preenchidos!");
         }
     }
 }
