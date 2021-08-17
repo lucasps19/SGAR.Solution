@@ -21,7 +21,7 @@ namespace SGAR.WebApi.Controllers
         [Route("/CadastrarUsuario")]
         public ActionResult CadastrarUsuario(PessoaViewModel pessoa)
         {
-            if (!string.IsNullOrEmpty(pessoa.Nome) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Email) || !string.IsNullOrEmpty(pessoa.Senha) || pessoa.Empresa != 0)
+            if (!string.IsNullOrEmpty(pessoa.Nome)  && !string.IsNullOrEmpty(pessoa.Email) && !string.IsNullOrEmpty(pessoa.Email) && !string.IsNullOrEmpty(pessoa.Senha) && pessoa.Empresa != 0)
             {
                 PessoaDTO dados = new()
                 {
