@@ -36,14 +36,14 @@ namespace SGAR.WebApi.Controllers
                 {
                     _cadastroUsuarioBll.CadastrarUsuario(dados);
 
-                    return Ok("Cadastro efetuado com sucesso");
+                    return Ok();
                 }
                 catch(Exception ex)
                 {
                     return Unauthorized(ex.Message);
                 }
             }
-            return Unauthorized("Existem campos obrigatórios não preenchidos!");
+            return Unauthorized();
         }
     }
 }
