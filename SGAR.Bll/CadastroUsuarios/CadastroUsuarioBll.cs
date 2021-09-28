@@ -1,7 +1,9 @@
 ﻿using SGAR.Dal.CadastroUsuarios;
+using SGAR.Dto.Empresa;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Models;
 using System;
+using System.Collections.Generic;
 
 namespace SGAR.Bll.CadastroUsuarios
 {
@@ -23,6 +25,13 @@ namespace SGAR.Bll.CadastroUsuarios
                     _cadastroUsuarioDal.CadastrarUsuario(pessoa);
                 }
             }
+        }
+
+        public List<EmpresaDto> BuscarEmpresasCadastradas()
+        {
+            //List<EmpresaDto> listaEmpresasCadastradas = _cadastroUsuarioDal.BuscarEmpresasCadastradas();
+
+            return null;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SGAR.Dal.CadastroUsuarios
@@ -47,6 +48,13 @@ namespace SGAR.Dal.CadastroUsuarios
             {
                 return true;
             }
+        }
+
+        public List<Empresa> BuscarEmpresasCadastradas()
+        {
+            List<Empresa> empresas = _contexto.Empresas.ToList();
+
+            return empresas;
         }
     }
 }

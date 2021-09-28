@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.CadastroUsuarios;
 using SGAR.Dto.Pessoa;
+using SGAR.WebApi.ViewModel.Empresa;
 using SGAR.WebApi.ViewModel.Pessoa;
 using System;
 
@@ -44,6 +45,13 @@ namespace SGAR.WebApi.Controllers
                 }
             }
             return Unauthorized();
+        }
+
+        [HttpGet]
+        [Route("/BuscarEmpresasCadastradas")]
+        public ActionResult<EmpresaViewModel> BuscarEmpresasCadastradas()
+        {
+            return null;
         }
     }
 }
