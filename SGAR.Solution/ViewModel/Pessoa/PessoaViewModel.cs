@@ -9,6 +9,6 @@ namespace SGAR.WebApi.ViewModel.Pessoa
         public string Email { get; set; }
         public string CPF { get; set; }
         public string Senha { get; set; }
-        public int Empresa { get; set; }
+        public int IdEmpresa { get; set; }
     }
 }

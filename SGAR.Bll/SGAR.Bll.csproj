@@ -14,4 +14,8 @@
     <ProjectReference Include="..\SGAR.Dto\SGAR.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappers\DtoToEntity\" />
+  </ItemGroup>
+
 </Project>

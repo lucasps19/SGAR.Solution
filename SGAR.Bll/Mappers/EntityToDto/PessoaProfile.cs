@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using SGAR.Dto.Pessoa;
-using SGAR.WebApi.ViewModel.Pessoa;
+using SGAR.Model.Models;
 
-namespace SGAR.WebApi.Mappers.DtoToViewModel
+namespace SGAR.Bll.Mappers.EntityToDto
 {
-    public class PessoaProfile : Profile
+    class PessoaProfile : Profile
     {
         public PessoaProfile()
         {
-            CreateMap<PessoaDTO, PessoaViewModel>()
+            CreateMap<Pessoa, PessoaDTO>()
                 .ForMember(dest => dest.IdEmpresa, map => map.MapFrom(src => src.IdEmpresa))
                 .ReverseMap();
         }
