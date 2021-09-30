@@ -3,7 +3,6 @@ using SGAR.Dal.CadastroUsuarios;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Models;
-using System;
 using System.Collections.Generic;
 
 namespace SGAR.Bll.CadastroUsuarios
@@ -32,9 +31,7 @@ namespace SGAR.Bll.CadastroUsuarios
 
         public List<EmpresaDto> BuscarEmpresasCadastradas()
         {
-            //List<EmpresaDto> listaEmpresasCadastradas = _cadastroUsuarioDal.BuscarEmpresasCadastradas();
-
-            return null;
+            return _mapper.Map<List<Empresa>, List<EmpresaDto>>(_cadastroUsuarioDal.BuscarEmpresasCadastradas());
         }
     }
 }

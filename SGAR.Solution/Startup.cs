@@ -1,12 +1,8 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SGAR.Bll.CadastroUsuarios;
 using SGAR.Bll.Login;
@@ -15,11 +11,7 @@ using SGAR.Dal.Login;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Contexto;
-using SGAR.WebApi.ViewModel.Empresa;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SGAR.Solution
 {

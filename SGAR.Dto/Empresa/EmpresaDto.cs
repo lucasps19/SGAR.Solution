@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace SGAR.Dto.Empresa
+﻿namespace SGAR.Dto.Empresa
 {
     public class EmpresaDto
     {

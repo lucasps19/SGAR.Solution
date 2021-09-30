@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.CadastroUsuarios;
 using SGAR.Dto.Empresa;
@@ -7,6 +6,7 @@ using SGAR.Dto.Pessoa;
 using SGAR.WebApi.ViewModel.Empresa;
 using SGAR.WebApi.ViewModel.Pessoa;
 using System;
+using System.Collections.Generic;
 
 namespace SGAR.WebApi.Controllers
 {
@@ -54,14 +54,9 @@ namespace SGAR.WebApi.Controllers
 
         [HttpGet]
         [Route("/BuscarEmpresasCadastradas")]
-        public ActionResult<EmpresaViewModel> BuscarEmpresasCadastradas()
+        public ActionResult<List<EmpresaViewModel>> BuscarEmpresasCadastradas()
         {
-            EmpresaDto empresa = new(){
-                Id = 1,
-                Nome = "TESTE"
-            };
-
-            return _mapper.Map<EmpresaDto, EmpresaViewModel>(empresa);
+            return _mapper.Map<List<EmpresaDto>, List<EmpresaViewModel>>(_cadastroUsuarioBll.BuscarEmpresasCadastradas());
         }
     }
 }

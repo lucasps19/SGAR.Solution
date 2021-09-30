@@ -1,6 +1,4 @@
-﻿using SGAR.Dto.Pessoa;
-
-namespace SGAR.WebApi.ViewModel.Pessoa
+﻿namespace SGAR.WebApi.ViewModel.Pessoa
 {
     public class PessoaViewModel
     {
