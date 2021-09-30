@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,7 @@ using SGAR.Dal.Login;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Contexto;
+using SGAR.WebApi.ViewModel.Empresa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +40,7 @@ namespace SGAR.Solution
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<LoginBll>();
             services.AddScoped<CadastroUsuarioBll>();

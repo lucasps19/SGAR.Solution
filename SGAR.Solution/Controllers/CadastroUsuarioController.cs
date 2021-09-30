@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.CadastroUsuarios;
+using SGAR.Dto.Empresa;
 using SGAR.Dto.Pessoa;
 using SGAR.WebApi.ViewModel.Empresa;
 using SGAR.WebApi.ViewModel.Pessoa;
@@ -12,10 +15,12 @@ namespace SGAR.WebApi.Controllers
     public class CadastroUsuarioController : ControllerBase
     {
         private readonly CadastroUsuarioBll _cadastroUsuarioBll;
+        private readonly IMapper _mapper;
 
-        public CadastroUsuarioController(CadastroUsuarioBll cadastroUsuarioBll)
+        public CadastroUsuarioController(CadastroUsuarioBll cadastroUsuarioBll, IMapper mapper)
         {
             _cadastroUsuarioBll = cadastroUsuarioBll;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -51,7 +56,12 @@ namespace SGAR.WebApi.Controllers
         [Route("/BuscarEmpresasCadastradas")]
         public ActionResult<EmpresaViewModel> BuscarEmpresasCadastradas()
         {
-            return null;
+            EmpresaDto empresa = new(){
+                Id = 1,
+                Nome = "TESTE"
+            };
+
+            return _mapper.Map<EmpresaDto, EmpresaViewModel>(empresa);
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.Login;
+using SGAR.Dto.Pessoa;
 using SGAR.WebApi.ViewModel.Pessoa;
 using System;
 
@@ -10,10 +12,12 @@ namespace SGAR.WebApi.Controllers
     public class LoginController : ControllerBase
     {
         private readonly LoginBll _loginBll;
+        private readonly IMapper _mapper;
 
-        public LoginController(LoginBll loginBll)
+        public LoginController(LoginBll loginBll, IMapper mapper)
         {
             _loginBll = loginBll;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -24,7 +28,7 @@ namespace SGAR.WebApi.Controllers
             {
                 try
                 {
-                    PessoaViewModel retorno = _loginBll.EfetuarLogin(cpf, senha);
+                    PessoaViewModel retorno = _mapper.Map<PessoaDTO, PessoaViewModel>(_loginBll.EfetuarLogin(cpf, senha));
 
                     return retorno;
                 }
