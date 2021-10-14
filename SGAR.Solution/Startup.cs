@@ -5,10 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SGAR.Bll.CadastroUsuarios;
+using SGAR.Bll.ListarApreciacoes;
 using SGAR.Bll.Login;
 using SGAR.Dal.CadastroUsuarios;
+using SGAR.Dal.ListarApreciacoes;
 using SGAR.Dal.Login;
 using SGAR.Dto.Empresa;
+using SGAR.Dto.Equipamento;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Contexto;
 using System;
@@ -36,10 +39,13 @@ namespace SGAR.Solution
 
             services.AddScoped<LoginBll>();
             services.AddScoped<CadastroUsuarioBll>();
+            services.AddScoped<ListarApreciacoesBll>();
             services.AddScoped<LoginDal>();
             services.AddScoped<CadastroUsuarioDal>();
+            services.AddScoped<ListarApreciacoesDal>();
             services.AddScoped<PessoaDTO>();
             services.AddScoped<EmpresaDto>();
+            services.AddScoped<TipoEquipamentoDto>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
