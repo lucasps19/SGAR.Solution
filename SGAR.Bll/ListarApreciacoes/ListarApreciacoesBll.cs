@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SGAR.Dal.ListarApreciacoes;
 using SGAR.Dto.Equipamento;
+using SGAR.Dto.HRN;
 using SGAR.Model.Models;
+using SGAR.Model.Models.HRN;
 using System.Collections.Generic;
 
 namespace SGAR.Bll.ListarApreciacoes
@@ -20,6 +22,11 @@ namespace SGAR.Bll.ListarApreciacoes
         public List<TipoEquipamentoDto> BuscarTiposEquipamentos()
         {
             return _mapper.Map<List<TipoEquipamento>, List<TipoEquipamentoDto>>(_listarApreciacoesDal.BuscarTiposEquipamentos());
+        }
+
+        public List<FaixaHRNDto> BuscarFaixasHRN()
+        {
+            return _mapper.Map<List<FaixaHRN>, List<FaixaHRNDto>>(_listarApreciacoesDal.BuscarFaixasHRN());
         }
     }
 }

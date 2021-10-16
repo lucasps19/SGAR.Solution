@@ -1,10 +1,8 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
-using System;
+using SGAR.Model.Models.HRN;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGAR.Dal.ListarApreciacoes
 {
@@ -19,9 +17,12 @@ namespace SGAR.Dal.ListarApreciacoes
 
         public List<TipoEquipamento> BuscarTiposEquipamentos()
         {
-            List<TipoEquipamento> tiposEquipamentos = _contexto.TiposEquipamento.ToList();
+            return _contexto.TiposEquipamento.ToList();
+        }
 
-            return tiposEquipamentos;
+        public List<FaixaHRN> BuscarFaixasHRN()
+        {
+            return _contexto.FaixasHRN.ToList();
         }
     }
 }
