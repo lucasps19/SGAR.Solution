@@ -18,5 +18,10 @@ namespace SGAR.Dal.NovaApreciacao
         {
             return _contexto.Equipamentos.ToList();
         }
+
+        public List<Pessoa> BuscarPessoasPorEmpresa(int idEmpresa)
+        {
+            return _contexto.Pessoas.Where(o => o.IdEmpresa == idEmpresa).ToList();
+        }
     }
 }
