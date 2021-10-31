@@ -27,5 +27,10 @@ namespace SGAR.Bll.NovaApreciacao
         {
             return _mapper.Map<List<Pessoa>, List<PessoaDTO>>(_novaApreciacaoDal.BuscarPessoasPorEmpresa(idEmpresa));
         }
+
+        public List<TipoEquipamentoDto> BuscarTiposEquipamentos()
+        {
+            return _mapper.Map<List<TipoEquipamento>, List<TipoEquipamentoDto>>(_novaApreciacaoDal.BuscarTiposEquipamentos());
+        }
     }
 }

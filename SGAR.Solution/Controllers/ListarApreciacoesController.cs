@@ -23,13 +23,6 @@ namespace SGAR.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("/BuscarTiposEquipamentos")]
-        public ActionResult<List<TipoEquipamentoViewModel>> BuscarTiposEquipamentos()
-        {
-            return _mapper.Map<List<TipoEquipamentoDto>, List<TipoEquipamentoViewModel>>(_listarApreciacoesBll.BuscarTiposEquipamentos());
-        }
-
-        [HttpGet]
         [Route("/BuscarFaixasHRN")]
         public ActionResult<List<FaixaHRNViewModel>> BuscarFaixasHRN()
         {

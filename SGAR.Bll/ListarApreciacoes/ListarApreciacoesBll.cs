@@ -19,11 +19,6 @@ namespace SGAR.Bll.ListarApreciacoes
             _mapper = mapper;
         }
 
-        public List<TipoEquipamentoDto> BuscarTiposEquipamentos()
-        {
-            return _mapper.Map<List<TipoEquipamento>, List<TipoEquipamentoDto>>(_listarApreciacoesDal.BuscarTiposEquipamentos());
-        }
-
         public List<FaixaHRNDto> BuscarFaixasHRN()
         {
             return _mapper.Map<List<FaixaHRN>, List<FaixaHRNDto>>(_listarApreciacoesDal.BuscarFaixasHRN());

@@ -15,11 +15,6 @@ namespace SGAR.Dal.ListarApreciacoes
             _contexto = contexto;
         }
 
-        public List<TipoEquipamento> BuscarTiposEquipamentos()
-        {
-            return _contexto.TiposEquipamento.ToList();
-        }
-
         public List<FaixaHRN> BuscarFaixasHRN()
         {
             return _contexto.FaixasHRN.ToList();

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Mappers\ViewModelToDto\" />
+    <Folder Include="ViewModel\ApreciacaoRisco\" />
   </ItemGroup>
 
 </Project>

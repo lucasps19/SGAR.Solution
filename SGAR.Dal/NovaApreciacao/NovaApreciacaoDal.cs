@@ -23,5 +23,10 @@ namespace SGAR.Dal.NovaApreciacao
         {
             return _contexto.Pessoas.Where(o => o.IdEmpresa == idEmpresa).ToList();
         }
+
+        public List<TipoEquipamento> BuscarTiposEquipamentos()
+        {
+            return _contexto.TiposEquipamento.ToList();
+        }
     }
 }
