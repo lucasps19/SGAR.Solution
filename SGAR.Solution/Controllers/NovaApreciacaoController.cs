@@ -8,6 +8,7 @@ using SGAR.Dto.Pessoa;
 using SGAR.WebApi.ViewModel.Empresa;
 using SGAR.WebApi.ViewModel.Equipamento;
 using SGAR.WebApi.ViewModel.Pessoa;
+using System;
 using System.Collections.Generic;
 
 namespace SGAR.WebApi.Controllers
@@ -53,6 +54,24 @@ namespace SGAR.WebApi.Controllers
         public ActionResult<List<EmpresaViewModel>> BuscarEmpresasCadastradas()
         {
             return _mapper.Map<List<EmpresaDto>, List<EmpresaViewModel>>(_cadastroUsuarioBll.BuscarEmpresasCadastradas());
+        }
+
+        [HttpPost]
+        [Route("/CadastrarEquipamento")]
+        public ActionResult CadastrarEquipamento(EquipamentoViewModel equipamento)
+        {
+            equipamento.Nome = equipamento.Nome.ToUpper();
+
+            try
+            {
+                _novaApreciacaoBll.CadastrarEquipamento(_mapper.Map<EquipamentoViewModel, EquipamentoDto>(equipamento));
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
         }
     }
 }
