@@ -34,5 +34,11 @@ namespace SGAR.Dal.NovaApreciacao
             _contexto.Equipamentos.Add(equipamento);
             _contexto.SaveChanges();
         }
+
+        public void CadastrarTipoEquipamento(TipoEquipamento tipoEquipamento)
+        {
+            _contexto.TiposEquipamento.Add(tipoEquipamento);
+            _contexto.SaveChanges();
+        }
     }
 }

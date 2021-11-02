@@ -38,5 +38,10 @@ namespace SGAR.Bll.NovaApreciacao
             _novaApreciacaoDal.CadastrarEquipamento(_mapper.Map<EquipamentoDto, Equipamento>(equipamento));
         } 
 
+        public void CadastrarTipoEquipamento(TipoEquipamentoDto tipoEquipamento)
+        {
+            _novaApreciacaoDal.CadastrarTipoEquipamento(_mapper.Map<TipoEquipamentoDto, TipoEquipamento>(tipoEquipamento));
+        }
+
     }
 }

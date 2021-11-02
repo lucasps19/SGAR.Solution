@@ -73,5 +73,23 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("/CadastrarTipoEquipamento")]
+        public ActionResult CadastrarTipoEquipamento(TipoEquipamentoViewModel tipoEquipamento)
+        {
+            tipoEquipamento.Descricao = tipoEquipamento.Descricao.ToUpper();
+
+            try
+            {
+                _novaApreciacaoBll.CadastrarTipoEquipamento(_mapper.Map<TipoEquipamentoViewModel, TipoEquipamentoDto>(tipoEquipamento));
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }
