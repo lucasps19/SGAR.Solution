@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SGAR.Dal.NovaApreciacao;
+using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Dto.Equipamento;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Models;
@@ -41,6 +42,15 @@ namespace SGAR.Bll.NovaApreciacao
         public void CadastrarTipoEquipamento(TipoEquipamentoDto tipoEquipamento)
         {
             _novaApreciacaoDal.CadastrarTipoEquipamento(_mapper.Map<TipoEquipamentoDto, TipoEquipamento>(tipoEquipamento));
+        }
+
+        public ApreciacaoRiscoDto IncluirNovaApreciacaoRisco(ApreciacaoRiscoDto novaApreciacaoRisco)
+        {
+            ApreciacaoRiscoDto apreciacaoRisco = new ApreciacaoRiscoDto();
+
+            apreciacaoRisco = _mapper.Map<ApreciacaoRisco, ApreciacaoRiscoDto>(_novaApreciacaoDal.IncluirNovaApreciacaoRisco(_mapper.Map<ApreciacaoRiscoDto, ApreciacaoRisco>(novaApreciacaoRisco)));
+
+            return apreciacaoRisco;
         }
 
     }

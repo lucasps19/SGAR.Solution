@@ -40,5 +40,17 @@ namespace SGAR.Dal.NovaApreciacao
             _contexto.TiposEquipamento.Add(tipoEquipamento);
             _contexto.SaveChanges();
         }
+
+        public ApreciacaoRisco IncluirNovaApreciacaoRisco(ApreciacaoRisco novaApreciacao)
+        {
+            ApreciacaoRisco apreciacaoRisco = new ApreciacaoRisco();
+
+            _contexto.ApreciacoesRisco.Add(novaApreciacao);
+            _contexto.SaveChanges();
+
+            apreciacaoRisco = _contexto.ApreciacoesRisco.Where(o => o.Id == novaApreciacao.Id).FirstOrDefault();
+
+            return apreciacaoRisco;
+        }
     }
 }

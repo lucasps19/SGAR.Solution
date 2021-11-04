@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.CadastroUsuarios;
 using SGAR.Bll.NovaApreciacao;
+using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Equipamento;
 using SGAR.Dto.Pessoa;
+using SGAR.WebApi.ViewModel.ApreciacaoRisco;
 using SGAR.WebApi.ViewModel.Empresa;
 using SGAR.WebApi.ViewModel.Equipamento;
 using SGAR.WebApi.ViewModel.Pessoa;
@@ -85,6 +87,24 @@ namespace SGAR.WebApi.Controllers
                 _novaApreciacaoBll.CadastrarTipoEquipamento(_mapper.Map<TipoEquipamentoViewModel, TipoEquipamentoDto>(tipoEquipamento));
 
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/IncluirNovaApreciacao")]
+        public ActionResult<ApreciacaoRiscoViewModel> IncluirNovaApreciacaoRisco(ApreciacaoRiscoViewModel novaApreciacaoRisco)
+        {
+            ApreciacaoRiscoViewModel apreciacaoRisco = new ApreciacaoRiscoViewModel();
+
+            try
+            {
+                apreciacaoRisco = _mapper.Map<ApreciacaoRiscoDto, ApreciacaoRiscoViewModel>(_novaApreciacaoBll.IncluirNovaApreciacaoRisco(_mapper.Map<ApreciacaoRiscoViewModel, ApreciacaoRiscoDto>(novaApreciacaoRisco)));
+
+                return apreciacaoRisco;
             }
             catch (Exception ex)
             {
