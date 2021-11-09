@@ -43,14 +43,15 @@ namespace SGAR.Dal.NovaApreciacao
 
         public ApreciacaoRisco IncluirNovaApreciacaoRisco(ApreciacaoRisco novaApreciacao)
         {
-            ApreciacaoRisco apreciacaoRisco = new ApreciacaoRisco();
-
+            foreach(var pessoa in novaApreciacao.Pessoas)
+            {
+                _contexto.Pessoas.Attach(pessoa);
+            }
+            
             _contexto.ApreciacoesRisco.Add(novaApreciacao);
             _contexto.SaveChanges();
 
-            apreciacaoRisco = _contexto.ApreciacoesRisco.Where(o => o.Id == novaApreciacao.Id).FirstOrDefault();
-
-            return apreciacaoRisco;
+            return novaApreciacao;
         }
     }
 }
