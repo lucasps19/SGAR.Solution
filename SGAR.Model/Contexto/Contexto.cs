@@ -81,7 +81,7 @@ namespace SGAR.Model.Contexto
             dbModelBuilder.Entity<ApreciacaoRisco>().Property(o => o.LimiteTempo).IsRequired().HasMaxLength(500).HasColumnName("LIM_TEMP");
             dbModelBuilder.Entity<ApreciacaoRisco>().Property(o => o.IdEquipamento).IsRequired().HasColumnName("ID_EQP");
             dbModelBuilder.Entity<ApreciacaoRisco>().HasRequired(o => o.Equipamento).WithMany(o => o.ApreciacoesRisco).HasForeignKey(o => o.IdEquipamento);
-            dbModelBuilder.Entity<ApreciacaoRisco>().HasMany(o => o.Pessoas).WithMany(o => o.ApreciacoesRiscos).Map(o => { o.ToTable("EXCECUTA_APR"); o.MapLeftKey("MAT_PES"); o.MapRightKey("ID_APR"); });
+            dbModelBuilder.Entity<ApreciacaoRisco>().HasMany(o => o.Pessoas).WithMany(o => o.ApreciacoesRiscos).Map(o => { o.MapLeftKey("ID_APR"); o.MapRightKey("MAT_PES"); o.ToTable("EXECUTA_APR"); });
 
             dbModelBuilder.Entity<PossibilidadeOcorrencia>().ToTable("PO_HRN");
             dbModelBuilder.Entity<PossibilidadeOcorrencia>().HasKey(o => o.Id);
