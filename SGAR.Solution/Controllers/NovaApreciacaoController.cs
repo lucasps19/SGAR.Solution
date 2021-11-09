@@ -98,8 +98,6 @@ namespace SGAR.WebApi.Controllers
         [Route("/IncluirNovaApreciacao")]
         public ActionResult<ApreciacaoRiscoViewModel> IncluirNovaApreciacaoRisco(ApreciacaoRiscoViewModel novaApreciacaoRisco)
         {
-            novaApreciacaoRisco.DataApreciacao = DateTime.Now;
-
             ApreciacaoRiscoViewModel apreciacaoRisco = new ApreciacaoRiscoViewModel();
 
             try
