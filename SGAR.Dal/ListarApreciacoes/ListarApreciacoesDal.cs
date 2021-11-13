@@ -1,6 +1,5 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
-using SGAR.Model.Models.HRN;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,9 +14,9 @@ namespace SGAR.Dal.ListarApreciacoes
             _contexto = contexto;
         }
 
-        public List<FaixaHRN> BuscarFaixasHRN()
+        public List<ApreciacaoRisco> BuscarApreciacoesRiscoDoUsuario(int idUsuario)
         {
-            return _contexto.FaixasHRN.ToList();
+            return _contexto.ApreciacoesRisco.Where(o => o.Pessoas.Contains(_contexto.Pessoas.Where(o => o.Id == idUsuario).FirstOrDefault())).ToList();
         }
     }
 }

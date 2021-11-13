@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using SGAR.Dal.ListarApreciacoes;
-using SGAR.Dto.Equipamento;
-using SGAR.Dto.HRN;
+using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Model.Models;
-using SGAR.Model.Models.HRN;
 using System.Collections.Generic;
 
 namespace SGAR.Bll.ListarApreciacoes
@@ -19,9 +17,9 @@ namespace SGAR.Bll.ListarApreciacoes
             _mapper = mapper;
         }
 
-        public List<FaixaHRNDto> BuscarFaixasHRN()
+        public List<ApreciacaoRiscoDto> BuscarApreciacoesRiscoDoUsuario(int idUsuario)
         {
-            return _mapper.Map<List<FaixaHRN>, List<FaixaHRNDto>>(_listarApreciacoesDal.BuscarFaixasHRN());
+            return _mapper.Map<List<ApreciacaoRisco>, List<ApreciacaoRiscoDto>>(_listarApreciacoesDal.BuscarApreciacoesRiscoDoUsuario(idUsuario));
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.ListarApreciacoes;
-using SGAR.Dto.Equipamento;
-using SGAR.Dto.HRN;
-using SGAR.WebApi.ViewModel.Equipamento;
-using SGAR.WebApi.ViewModel.HRN;
+using SGAR.Dto.Apreciacao_de_Risco;
+using SGAR.WebApi.ViewModel.ApreciacaoRisco;
+using System;
 using System.Collections.Generic;
 
 namespace SGAR.WebApi.Controllers
@@ -23,10 +22,12 @@ namespace SGAR.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("/BuscarFaixasHRN")]
-        public ActionResult<List<FaixaHRNViewModel>> BuscarFaixasHRN()
+        [Route("/BuscarApreciacoes")]
+        public ActionResult<List<ApreciacaoRiscoViewModel>> BuscarApreciacoesRiscoDoUsuario(string idUsuarioLogado)
         {
-            return _mapper.Map<List<FaixaHRNDto>, List<FaixaHRNViewModel>>(_listarApreciacoesBll.BuscarFaixasHRN());
+            int idUsuario = Int32.Parse(idUsuarioLogado);
+
+            return _mapper.Map<List<ApreciacaoRiscoDto>, List<ApreciacaoRiscoViewModel>>(_listarApreciacoesBll.BuscarApreciacoesRiscoDoUsuario(idUsuario));
         }
     }
 }
