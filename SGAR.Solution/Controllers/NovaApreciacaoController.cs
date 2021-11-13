@@ -39,9 +39,10 @@ namespace SGAR.WebApi.Controllers
 
         [HttpGet]
         [Route("/BuscarPessoasPorEmpresa")]
-        public ActionResult<List<PessoaViewModel>> BuscarPessoasPorEmpresa()
+        public ActionResult<List<PessoaViewModel>> BuscarPessoasPorEmpresa(string idEmpresaUsuarioLogado)
         {
-            return _mapper.Map<List<PessoaDTO>, List<PessoaViewModel>>(_novaApreciacaoBll.BuscarPessoasPorEmpresa(1));
+            int idEmpresa = Int32.Parse(idEmpresaUsuarioLogado);
+            return _mapper.Map<List<PessoaDTO>, List<PessoaViewModel>>(_novaApreciacaoBll.BuscarPessoasPorEmpresa(idEmpresa));
         }
 
         [HttpGet]
