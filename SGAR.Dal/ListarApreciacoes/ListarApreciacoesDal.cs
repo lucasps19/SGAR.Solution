@@ -16,7 +16,14 @@ namespace SGAR.Dal.ListarApreciacoes
 
         public List<ApreciacaoRisco> BuscarApreciacoesRiscoDoUsuario(int idUsuario)
         {
-            return _contexto.ApreciacoesRisco.Where(o => o.Pessoas.Contains(_contexto.Pessoas.Where(o => o.Id == idUsuario).FirstOrDefault())).ToList();
+            var apreciacoes = _contexto.ApreciacoesRisco.Where(o => o.Pessoas.Contains(_contexto.Pessoas.Where(o => o.Id == idUsuario).FirstOrDefault())).ToList();
+
+            foreach(var apr in apreciacoes)
+            {
+                apr.Equipamento = _contexto.Equipamentos.Where(o => o.Id == apr.IdEquipamento).FirstOrDefault();
+            }            
+
+            return apreciacoes;
         }
     }
 }

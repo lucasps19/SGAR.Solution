@@ -1,4 +1,5 @@
-﻿using SGAR.WebApi.ViewModel.Pessoa;
+﻿using SGAR.WebApi.ViewModel.Equipamento;
+using SGAR.WebApi.ViewModel.Pessoa;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace SGAR.WebApi.ViewModel.ApreciacaoRisco
         public string LimiteUso { get; set; }
         public string LimiteEspaco { get; set; }
         public string LimiteTempo { get; set; }
-        public int IdEquipamento { get; set; }
+        public EquipamentoViewModel Equipamento { get; set; }
         public List<PessoaViewModel> Pessoas { get; set; }
     }
 }

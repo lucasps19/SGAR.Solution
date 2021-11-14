@@ -1,4 +1,5 @@
-﻿using SGAR.Dto.Pessoa;
+﻿using SGAR.Dto.Equipamento;
+using SGAR.Dto.Pessoa;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace SGAR.Dto.Apreciacao_de_Risco
         public string LimiteUso { get; set; }
         public string LimiteEspaco { get; set; }
         public string LimiteTempo { get; set; }
-        public int IdEquipamento { get; set; }
+        public EquipamentoDto Equipamento { get; set; }
         public List<PessoaDTO> Pessoas { get; set; }
     }
 }

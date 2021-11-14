@@ -47,6 +47,8 @@ namespace SGAR.Dal.NovaApreciacao
             {
                 _contexto.Pessoas.Attach(pessoa);
             }
+
+            _contexto.Equipamentos.Attach(novaApreciacao.Equipamento);
             
             _contexto.ApreciacoesRisco.Add(novaApreciacao);
             _contexto.SaveChanges();
