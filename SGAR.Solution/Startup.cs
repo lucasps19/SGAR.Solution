@@ -15,6 +15,7 @@ using SGAR.Dal.NovaApreciacao;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Equipamento;
 using SGAR.Dto.HRN;
+using SGAR.Dto.NR12100;
 using SGAR.Dto.Pessoa;
 using SGAR.Model.Contexto;
 using System;
@@ -53,6 +54,11 @@ namespace SGAR.Solution
             services.AddScoped<TipoEquipamentoDto>();
             services.AddScoped<EquipamentoDto>();
             services.AddScoped<FaixaHRNDto>();
+            services.AddScoped<CicloVidaDto>();
+            services.AddScoped<TarefaDto>();
+            services.AddScoped<TipoGrupoPerigoDto>();
+            services.AddScoped<DanoDto>();
+            services.AddScoped<RiscoABNT12100Dto>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
