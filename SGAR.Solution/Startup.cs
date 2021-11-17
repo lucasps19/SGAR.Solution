@@ -12,6 +12,7 @@ using SGAR.Dal.CadastroUsuarios;
 using SGAR.Dal.ListarApreciacoes;
 using SGAR.Dal.Login;
 using SGAR.Dal.NovaApreciacao;
+using SGAR.Dto.Categoria_e_Performance_Level;
 using SGAR.Dto.Empresa;
 using SGAR.Dto.Equipamento;
 using SGAR.Dto.HRN;
@@ -65,6 +66,7 @@ namespace SGAR.Solution
             services.AddScoped<GrauPossivelLesaoDto>();
             services.AddScoped<HRNAntesDto>();
             services.AddScoped<HRNDepoisDto>();
+            services.AddScoped<DescricaoCategoriaDto>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
