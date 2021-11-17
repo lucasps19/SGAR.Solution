@@ -72,6 +72,7 @@ namespace SGAR.Solution
             services.AddScoped<SeveridadeFerimentoDto>();
             services.AddScoped<CategoriaRiscoDto>();
             services.AddScoped<DescricaoCategoriaDto>();
+            services.AddScoped<PerformanceLevelRequeridoDto>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
