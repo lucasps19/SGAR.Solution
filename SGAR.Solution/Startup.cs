@@ -62,6 +62,7 @@ namespace SGAR.Solution
             services.AddScoped<PossibilidadeOcorrenciaDto>();
             services.AddScoped<FrequenciaExposicaoDto>();
             services.AddScoped<NumeroPessoasDto>();
+            services.AddScoped<GrauPossivelLesaoDto>();
             services.AddScoped<Contexto>(o => new Contexto(/*Configuration.GetConnectionString(@"Data Source=NOTEBOOK-LUCAS-\MSSQLSERVERDEV;Initial Catalog=SGAR_BD;Integrated Security=True")*/));
             services.AddControllers();
             services.AddSwaggerGen(c =>
