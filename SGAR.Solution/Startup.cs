@@ -72,7 +72,7 @@ namespace SGAR.Solution
             services.AddScoped<FrequenciaExposicaoPerigoDto>();
             services.AddScoped<SeveridadeFerimentoDto>();
             services.AddScoped<CategoriaRiscoDto>();
-            services.AddScoped<DescricaoCategoriaDto>();
+            services.AddScoped<DescricaoPerformanceLevelDto>();
             services.AddScoped<PerformanceLevelRequeridoDto>();
             services.AddScoped<RiscoDto>();
             services.AddScoped<ApreciacaoRiscoDto>();

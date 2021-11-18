@@ -10,7 +10,7 @@
         public PossibilidadeOcorrenciaViewModel PossibilidadeOcorrencia { get; set; }
         public int IdFrequenciaExposicao { get; set; }
         public FrequenciaExposicaoViewModel FrequenciaExposicao { get; set; }
-        public int IdNumeroPessoasViewModel { get; set; }
+        public int IdNumeroPessoas { get; set; }
         public NumeroPessoasViewModel NumeroPessoas { get; set; }
         public int IdGrauPossivelLesao { get; set; }
         public GrauPossivelLesaoViewModel GrauPossivelLesao { get; set; }
