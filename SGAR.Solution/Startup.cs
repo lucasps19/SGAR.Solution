@@ -5,10 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SGAR.Bll.CadastroUsuarios;
+using SGAR.Bll.EditarApreciacao;
 using SGAR.Bll.ListarApreciacoes;
 using SGAR.Bll.Login;
 using SGAR.Bll.NovaApreciacao;
 using SGAR.Dal.CadastroUsuarios;
+using SGAR.Dal.EditarApreciacao;
 using SGAR.Dal.ListarApreciacoes;
 using SGAR.Dal.Login;
 using SGAR.Dal.NovaApreciacao;
@@ -43,6 +45,8 @@ namespace SGAR.Solution
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            services.AddScoped<EditarApreciacaoBll>();
+            services.AddScoped<EditarApreciacaoDal>();
             services.AddScoped<LoginBll>();
             services.AddScoped<CadastroUsuarioBll>();
             services.AddScoped<ListarApreciacoesBll>();
