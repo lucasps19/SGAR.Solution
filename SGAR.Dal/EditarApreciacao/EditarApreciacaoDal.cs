@@ -1,5 +1,6 @@
 ﻿using SGAR.Model.Contexto;
 using SGAR.Model.Models;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace SGAR.Dal.EditarApreciacao
@@ -15,11 +16,12 @@ namespace SGAR.Dal.EditarApreciacao
 
         public ApreciacaoRisco BuscarApreciacaoRisco(int idApreciacaoRisco)
         {
-            var apr =  _contexto.ApreciacoesRisco.Where(o => o.Id == idApreciacaoRisco)
+            var apr = _contexto.ApreciacoesRisco.Where(o => o.Id == idApreciacaoRisco)
                                 .Select(o => new { o.Id, o.Equipamento, o.DataApreciacao, o.LimiteEspaco, o.LimiteTempo, o.LimiteUso, o.Pessoas, o.IdEquipamento, o.Riscos })
                                 .FirstOrDefault();
 
-            ApreciacaoRisco apreciacaoRisco = new ApreciacaoRisco(){
+            ApreciacaoRisco apreciacaoRisco = new ApreciacaoRisco()
+            {
                 Id = apr.Id,
                 Equipamento = apr.Equipamento,
                 DataApreciacao = apr.DataApreciacao,
@@ -31,6 +33,16 @@ namespace SGAR.Dal.EditarApreciacao
                 Riscos = apr.Riscos
             };
 
+            return apreciacaoRisco;
+        }
+
+        public ApreciacaoRisco AtualizarApreciacaoRisco(ApreciacaoRisco apreciacaoRisco)
+        {
+            apreciacaoRisco.IdEquipamento = apreciacaoRisco.Equipamento.Id;
+
+            _contexto.ApreciacoesRisco.AddOrUpdate(apreciacaoRisco);
+            _contexto.SaveChanges();
+            
             return apreciacaoRisco;
         }
     }

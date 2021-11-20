@@ -34,10 +34,25 @@ namespace SGAR.WebApi.Controllers
 
                 return retorno;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Unauthorized(ex.Message);
             }
+        }
+
+        [HttpPost]
+        [Route("/AtualizarApreciacaoRisco")]
+        public ActionResult<ApreciacaoRiscoViewModel> AtualizarApreciacaoRisco(ApreciacaoRiscoViewModel apreciacaoRisco)
+        {
+            try
+            {
+                return _mapper.Map<ApreciacaoRiscoDto, ApreciacaoRiscoViewModel>(_editarApreciacaoBll.AtualizarApreciacaoRisco(_mapper.Map<ApreciacaoRiscoViewModel, ApreciacaoRiscoDto>(apreciacaoRisco)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+
         }
     }
 }

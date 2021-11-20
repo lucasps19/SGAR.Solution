@@ -20,5 +20,10 @@ namespace SGAR.Bll.EditarApreciacao
         {
             return _mapper.Map<ApreciacaoRisco, ApreciacaoRiscoDto>(_editarApreciacaoDal.BuscarApreciacaoRisco(idApreciacaoRisco));
         }
+
+        public ApreciacaoRiscoDto AtualizarApreciacaoRisco(ApreciacaoRiscoDto apreciacaoRisco)
+        {
+            return _mapper.Map<ApreciacaoRisco, ApreciacaoRiscoDto>(_editarApreciacaoDal.AtualizarApreciacaoRisco(_mapper.Map<ApreciacaoRiscoDto, ApreciacaoRisco>(apreciacaoRisco)));
+        }
     }
 }
