@@ -76,5 +76,19 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/BuscarRiscosABNT12100")]
+        public ActionResult<List<RiscoABNT12100ViewModel>> BuscarRiscosABNT12100()
+        {
+            try
+            {
+                return _mapper.Map<List<RiscoABNT12100Dto>, List<RiscoABNT12100ViewModel>>(_novoRiscoBll.BuscarRiscosABNT12100());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }

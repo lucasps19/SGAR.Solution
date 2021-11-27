@@ -33,5 +33,10 @@ namespace SGAR.Dal.NovoRisco
         {
             return _contexto.Danos.Where(o => o.IdTipoGrupoPerigo == idTipoGrupoPerigo).ToList();
         }
+
+        public List<RiscoABNT12100> BuscarRiscosABNT12100()
+        {
+            return _contexto.RiscosABNT.ToList();
+        }
     }
 }
