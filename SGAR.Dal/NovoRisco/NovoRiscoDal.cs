@@ -18,5 +18,10 @@ namespace SGAR.Dal.NovoRisco
         {
             return _contexto.CiclosDeVida.ToList();
         }
+
+        public List<Tarefa> BuscarTarefas(int idCicloVida)
+        {
+            return _contexto.Tarefas.Where(o => o.IdCicloVida == idCicloVida).ToList();
+        }
     }
 }

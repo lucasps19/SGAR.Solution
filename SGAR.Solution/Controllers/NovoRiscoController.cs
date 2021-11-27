@@ -34,5 +34,19 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/BuscarTarefas")]
+        public ActionResult<List<TarefaViewModel>> BuscarTarefas(int idCiclVida)
+        {
+            try
+            {
+                return _mapper.Map<List<TarefaDto>, List<TarefaViewModel>>(_novoRiscoBll.BuscarTarefas(idCiclVida));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }
