@@ -31,5 +31,10 @@ namespace SGAR.Bll.NovoRisco
         {
             return _mapper.Map<List<TipoGrupoPerigo>, List<TipoGrupoPerigoDto>>(_novoRiscoDal.BuscarTipoGrupoPerigo());
         }
+
+        public List<DanoDto> BuscarDanos(int idTipoGrupoPerigo)
+        {
+            return _mapper.Map<List<Dano>, List<DanoDto>>(_novoRiscoDal.BuscarDanos(idTipoGrupoPerigo));
+        }
     }
 }

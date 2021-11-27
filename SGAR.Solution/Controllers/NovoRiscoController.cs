@@ -62,5 +62,19 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/BuscarDano")]
+        public ActionResult<List<DanoViewModel>> BuscarDanos(int idTipoGrupoPerigo)
+        {
+            try
+            {
+                return _mapper.Map<List<DanoDto>, List<DanoViewModel>>(_novoRiscoBll.BuscarDanos(idTipoGrupoPerigo));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }
