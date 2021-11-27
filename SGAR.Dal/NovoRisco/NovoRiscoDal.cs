@@ -23,5 +23,10 @@ namespace SGAR.Dal.NovoRisco
         {
             return _contexto.Tarefas.Where(o => o.IdCicloVida == idCicloVida).ToList();
         }
+
+        public List<TipoGrupoPerigo> BuscarTipoGrupoPerigo()
+        {
+            return _contexto.TiposGruposPerigo.ToList();
+        }
     }
 }

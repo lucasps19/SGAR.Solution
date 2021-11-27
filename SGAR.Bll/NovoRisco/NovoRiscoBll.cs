@@ -26,5 +26,10 @@ namespace SGAR.Bll.NovoRisco
         {
             return _mapper.Map<List<Tarefa>, List<TarefaDto>>(_novoRiscoDal.BuscarTarefas(idCicloVida));
         }
+
+        public List<TipoGrupoPerigoDto> BuscarTipoGrupoPerigo()
+        {
+            return _mapper.Map<List<TipoGrupoPerigo>, List<TipoGrupoPerigoDto>>(_novoRiscoDal.BuscarTipoGrupoPerigo());
+        }
     }
 }

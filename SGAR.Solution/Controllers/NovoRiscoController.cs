@@ -48,5 +48,19 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/BuscarTipoGrupoPerigo")]
+        public ActionResult<List<TipoGrupoPerigoViewModel>> BuscarTipoGrupoPerigo()
+        {
+            try
+            {
+                return _mapper.Map<List<TipoGrupoPerigoDto>, List<TipoGrupoPerigoViewModel>>(_novoRiscoBll.BuscarTipoGrupoPerigo());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }
