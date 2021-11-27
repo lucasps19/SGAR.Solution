@@ -11,7 +11,7 @@ namespace SGAR.Model.Models.HRN
         }
 
         public string Descricao { get; set; }
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
         public List<HRNAntes> HRNsAntes { get; set; }
         public List<HRNDepois> HRNsDepois { get; set; }
     }

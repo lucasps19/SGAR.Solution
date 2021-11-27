@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.NovoRisco;
+using SGAR.Dto.HRN;
 using SGAR.Dto.NR12100;
+using SGAR.WebApi.ViewModel.HRN;
 using SGAR.WebApi.ViewModel.NR12100;
 using System;
 using System.Collections.Generic;
@@ -84,6 +86,62 @@ namespace SGAR.WebApi.Controllers
             try
             {
                 return _mapper.Map<List<RiscoABNT12100Dto>, List<RiscoABNT12100ViewModel>>(_novoRiscoBll.BuscarRiscosABNT12100());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarGLP-HRN")]
+        public ActionResult<List<GrauPossivelLesaoViewModel>> BuscarGLPHRN()
+        {
+            try
+            {
+                return _mapper.Map<List<GrauPossivelLesaoDto>, List<GrauPossivelLesaoViewModel>>(_novoRiscoBll.BuscarGLPHRN());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarPO-HRN")]
+        public ActionResult<List<PossibilidadeOcorrenciaViewModel>> BuscarPOHRN()
+        {
+            try
+            {
+                return _mapper.Map<List<PossibilidadeOcorrenciaDto>, List<PossibilidadeOcorrenciaViewModel>>(_novoRiscoBll.BuscarPOHRN());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarFE-HRN")]
+        public ActionResult<List<FrequenciaExposicaoViewModel>> BuscarFEHRN()
+        {
+            try
+            {
+                return _mapper.Map<List<FrequenciaExposicaoDto>, List<FrequenciaExposicaoViewModel>>(_novoRiscoBll.BuscarFEHRN());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarNP-HRN")]
+        public ActionResult<List<NumeroPessoasViewModel>> BuscarNPHRN()
+        {
+            try
+            {
+                return _mapper.Map<List<NumeroPessoasDto>, List<NumeroPessoasViewModel>>(_novoRiscoBll.BuscarNPHRN());
             }
             catch (Exception ex)
             {
