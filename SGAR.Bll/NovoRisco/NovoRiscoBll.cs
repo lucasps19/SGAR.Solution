@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using SGAR.Dal.NovoRisco;
+using SGAR.Dto.Categoria_e_Performance_Level;
 using SGAR.Dto.HRN;
 using SGAR.Dto.NR12100;
+using SGAR.Model.Models.Categoria_e_Performance_Level;
 using SGAR.Model.Models.HRN;
 using SGAR.Model.Models.NR12100;
 using System.Collections.Generic;
@@ -121,6 +123,21 @@ namespace SGAR.Bll.NovoRisco
             }
 
             return hrnAntes;
+        }
+
+        public List<SeveridadeFerimentoDto> BuscarSeveridadesFerimento()
+        {
+            return _mapper.Map<List<SeveridadeFerimento>, List<SeveridadeFerimentoDto>>(_novoRiscoDal.BuscarSeveridadesFerimento());
+        }
+
+        public List<FrequenciaExposicaoPerigoDto> BuscarFrequenciasExposicaoPerigo()
+        {
+            return _mapper.Map<List<FrequenciaExposicaoPerigo>, List<FrequenciaExposicaoPerigoDto>>(_novoRiscoDal.BuscarFrequenciasExposicaoPerigo());
+        }
+
+        public List<PossibilidadeEvitarPerigoDto> BuscarPossibilidadesEvitarPerigo()
+        {
+            return _mapper.Map<List<PossibilidadeEvitarPerigo>, List<PossibilidadeEvitarPerigoDto>>(_novoRiscoDal.BuscarPossibilidadesEvitarPerigo());
         }
     }
 }

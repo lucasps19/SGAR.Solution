@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.NovoRisco;
+using SGAR.Dto.Categoria_e_Performance_Level;
 using SGAR.Dto.HRN;
 using SGAR.Dto.NR12100;
+using SGAR.WebApi.ViewModel.Categoria_e_Performance_Level;
 using SGAR.WebApi.ViewModel.HRN;
 using SGAR.WebApi.ViewModel.NR12100;
 using System;
@@ -156,6 +158,48 @@ namespace SGAR.WebApi.Controllers
             try
             {
                 return _mapper.Map<HRNAntesDto, HRNAntesViewModel>(_novoRiscoBll.CalcularHrnAntes(_mapper.Map<HRNAntesViewModel, HRNAntesDto>(hrnAntes)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarSeveridadesFerimento")]
+        public ActionResult<List<SeveridadeFerimentoViewModel>> BuscarSeveridadesFerimento()
+        {
+            try
+            {
+                return _mapper.Map<List<SeveridadeFerimentoDto>, List<SeveridadeFerimentoViewModel>>(_novoRiscoBll.BuscarSeveridadesFerimento());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarFrequenciasExposicaoPerigo")]
+        public ActionResult<List<FrequenciaExposicaoPerigoViewModel>> BuscarFrequenciasExposicaoPerigo()
+        {
+            try
+            {
+                return _mapper.Map<List<FrequenciaExposicaoPerigoDto>, List<FrequenciaExposicaoPerigoViewModel>>(_novoRiscoBll.BuscarFrequenciasExposicaoPerigo());
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/BuscarPossibilidadesEvitarPerigo")]
+        public ActionResult<List<PossibilidadeEvitarPerigoViewModel>> BuscarPossibilidadesEvitarPerigo()
+        {
+            try
+            {
+                return _mapper.Map<List<PossibilidadeEvitarPerigoDto>, List<PossibilidadeEvitarPerigoViewModel>>(_novoRiscoBll.BuscarPossibilidadesEvitarPerigo());
             }
             catch (Exception ex)
             {

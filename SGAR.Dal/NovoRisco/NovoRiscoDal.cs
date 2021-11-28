@@ -1,4 +1,5 @@
 ﻿using SGAR.Model.Contexto;
+using SGAR.Model.Models.Categoria_e_Performance_Level;
 using SGAR.Model.Models.HRN;
 using SGAR.Model.Models.NR12100;
 using System.Collections.Generic;
@@ -63,6 +64,31 @@ namespace SGAR.Dal.NovoRisco
         public List<FaixaHRN> BuscarFaixasHRN()
         {
             return _contexto.FaixasHRN.ToList();
+        }
+
+        public List<SeveridadeFerimento> BuscarSeveridadesFerimento()
+        {
+            return _contexto.SeveridadesFerimentos.ToList();
+        }
+
+        public List<FrequenciaExposicaoPerigo> BuscarFrequenciasExposicaoPerigo()
+        {
+            return _contexto.FrequenciasExposicaoPerigos.ToList();
+        }
+
+        public List<PossibilidadeEvitarPerigo> BuscarPossibilidadesEvitarPerigo()
+        {
+            return _contexto.PossibilidadesEvitarPerigos.ToList();
+        }
+
+        public List<DescricaoCategoria> BuscarDescricoesCategoriaRisco()
+        {
+            return _contexto.DescricoesCategorias.ToList();
+        }
+
+        public List<DescricaoPerformanceLevel> BuscarDescricoesPerformanceLevel()
+        {
+            return _contexto.DescricoesPerformanceLevel.ToList();
         }
     }
 }
