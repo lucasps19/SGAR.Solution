@@ -63,5 +63,64 @@ namespace SGAR.Bll.NovoRisco
         {
             return _mapper.Map<List<NumeroPessoas>, List<NumeroPessoasDto>>(_novoRiscoDal.BuscarNPHRN());
         }
+
+        public HRNAntesDto CalcularHrnAntes(HRNAntesDto hrnAntes)
+        {
+            string faixaCalculada = null;
+
+            decimal valorGlp = hrnAntes.GrauPossivelLesao.Valor;
+            decimal valorPo = hrnAntes.PossibilidadeOcorrencia.Valor;
+            decimal valorFe = hrnAntes.FrequenciaExposicao.Valor;
+            decimal valorNp = hrnAntes.NumeroPessoas.Valor;
+
+            decimal valorHRNCalculado = valorGlp * valorPo * valorFe * valorNp;
+
+            hrnAntes.ValorCalculado = decimal.ToInt32(valorHRNCalculado);
+
+            List<FaixaHRNDto> faixaHRN = _mapper.Map<List<FaixaHRN>, List<FaixaHRNDto>>(_novoRiscoDal.BuscarFaixasHRN());
+
+            if(0 <= valorHRNCalculado && valorHRNCalculado <= 1)
+            {
+                faixaCalculada = "0 A 1";
+            }
+            else if(1 < valorHRNCalculado && valorHRNCalculado <= 5)
+            {
+                faixaCalculada = "1 A 5";
+            }
+            else if (5 < valorHRNCalculado && valorHRNCalculado <= 10)
+            {
+                faixaCalculada = "5 A 10";
+            }
+            else if (10 < valorHRNCalculado && valorHRNCalculado <= 50)
+            {
+                faixaCalculada = "10 A 50";
+            }
+            else if (50 < valorHRNCalculado && valorHRNCalculado <= 100)
+            {
+                faixaCalculada = "50 A 100";
+            }
+            else if (100 < valorHRNCalculado && valorHRNCalculado <= 500)
+            {
+                faixaCalculada = "100 A 500";
+            }
+            else if (500 < valorHRNCalculado && valorHRNCalculado <= 1000)
+            {
+                faixaCalculada = "500 A 1000";
+            }
+            else if (valorHRNCalculado > 1000)
+            {
+                faixaCalculada = "MAIOR QUE 1000";
+            }
+
+            foreach(var faixa in faixaHRN)
+            {
+                if(faixa.Faixa == faixaCalculada)
+                {
+                    hrnAntes.FaixaHRN = faixa;
+                }
+            }
+
+            return hrnAntes;
+        }
     }
 }

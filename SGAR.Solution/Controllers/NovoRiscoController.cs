@@ -148,5 +148,19 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("/CalcularHrnAntes")]
+        public ActionResult<HRNAntesViewModel> CalcularHrnAntes(HRNAntesViewModel hrnAntes)
+        {
+            try
+            {
+                return _mapper.Map<HRNAntesDto, HRNAntesViewModel>(_novoRiscoBll.CalcularHrnAntes(_mapper.Map<HRNAntesViewModel, HRNAntesDto>(hrnAntes)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }
