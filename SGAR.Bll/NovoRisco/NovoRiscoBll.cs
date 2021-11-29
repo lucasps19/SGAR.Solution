@@ -213,24 +213,32 @@ namespace SGAR.Bll.NovoRisco
                 if(cat.Descricao.Contains(categoria))
                 {
                     categoriaRisco.DescricaoCategoria = cat;
+                    categoriaRisco.IdDescricaoCategoria = cat.Id;
                 }
             }
 
             categoriaRisco.SeveridadeFerimento = severidadeFerimento;
+            categoriaRisco.IdSeveridadeFerimento = severidadeFerimento.Id;
             categoriaRisco.FrequenciaExposicaoPerigo = frequenciaExposicaoPerigo;
+            categoriaRisco.IdFrequenciaExposicaoPerigo = frequenciaExposicaoPerigo.Id;
             categoriaRisco.PossibilidadeEvitarPerigo = possibilidadeEvitarPerigo;
+            categoriaRisco.IdPossibilidadeEvitarPerigo = possibilidadeEvitarPerigo.Id;
 
-            foreach(var pl in descricaoPerformanceLevel)
+            foreach (var pl in descricaoPerformanceLevel)
             {
                 if (pl.Descricao.Contains(plr))
                 {
                     performanceLevelRequerido.DescricaoPerformanceLevel = pl;
+                    performanceLevelRequerido.IdDescricaoPerformanceLevel = pl.Id;
                 }
             }
 
             performanceLevelRequerido.SeveridadeFerimento = severidadeFerimento;
+            performanceLevelRequerido.IdSeveridadeFerimento = severidadeFerimento.Id;
             performanceLevelRequerido.FrequenciaExposicaoPerigo = frequenciaExposicaoPerigo;
+            performanceLevelRequerido.IdFrequenciaExposicaoPerigo = frequenciaExposicaoPerigo.Id;
             performanceLevelRequerido.PossibilidadeEvitarPerigo = possibilidadeEvitarPerigo;
+            performanceLevelRequerido.IdPossibilidadeEvitarPerigo = possibilidadeEvitarPerigo.Id;
 
             retorno.categoriaRisco = categoriaRisco;
             retorno.performanceLevelRequerido = performanceLevelRequerido;
