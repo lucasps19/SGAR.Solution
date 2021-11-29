@@ -206,5 +206,25 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("/CalcularCategoriaPLr")]
+        public ActionResult<CategoriaPerformanceLevelRequeridoViewModel> CalcularCategoriaPLr(
+            SeveridadeFerimentoViewModel severidadeFerimento, 
+            FrequenciaExposicaoPerigoViewModel frequenciaExposicaoPerigo, 
+            PossibilidadeEvitarPerigoViewModel possibilidadeEvitarPerigo)
+        {
+            try
+            {
+                return _mapper.Map<CategoriaPerformanceLevelRequeridoDto, CategoriaPerformanceLevelRequeridoViewModel>(_novoRiscoBll.CalcularCategoriaPLr(
+                        _mapper.Map<SeveridadeFerimentoViewModel, SeveridadeFerimentoDto>(severidadeFerimento),
+                        _mapper.Map<FrequenciaExposicaoPerigoViewModel, FrequenciaExposicaoPerigoDto>(frequenciaExposicaoPerigo),
+                        _mapper.Map<PossibilidadeEvitarPerigoViewModel, PossibilidadeEvitarPerigoDto>(possibilidadeEvitarPerigo)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }

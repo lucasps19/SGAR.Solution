@@ -139,5 +139,103 @@ namespace SGAR.Bll.NovoRisco
         {
             return _mapper.Map<List<PossibilidadeEvitarPerigo>, List<PossibilidadeEvitarPerigoDto>>(_novoRiscoDal.BuscarPossibilidadesEvitarPerigo());
         }
+
+        public CategoriaPerformanceLevelRequeridoDto CalcularCategoriaPLr(SeveridadeFerimentoDto severidadeFerimento, FrequenciaExposicaoPerigoDto frequenciaExposicaoPerigo, PossibilidadeEvitarPerigoDto possibilidadeEvitarPerigo)
+        {
+            string categoria = null;
+            string plr = null;
+
+            CategoriaRiscoDto categoriaRisco = new CategoriaRiscoDto();
+            PerformanceLevelRequeridoDto performanceLevelRequerido = new PerformanceLevelRequeridoDto();
+            CategoriaPerformanceLevelRequeridoDto retorno = new CategoriaPerformanceLevelRequeridoDto();
+
+            List<DescricaoCategoriaDto> descricaoCategoria = _mapper.Map<List<DescricaoCategoria>, List<DescricaoCategoriaDto>>(_novoRiscoDal.BuscarDescricoesCategoriaRisco());
+            List<DescricaoPerformanceLevelDto> descricaoPerformanceLevel = _mapper.Map<List<DescricaoPerformanceLevel>, List<DescricaoPerformanceLevelDto>>(_novoRiscoDal.BuscarDescricoesPerformanceLevel());
+
+            if(severidadeFerimento.Descricao == "S1 - FERIMENTO LEVE")
+            {
+                categoria = "B";
+                if(frequenciaExposicaoPerigo.Descricao == "F1 - RARO E RELATIVAMENTE FREQUENTE E/OU BAIXO TEMPO DE EXPOSIÇÃO")
+                {
+                    if(possibilidadeEvitarPerigo.Descricao == "P1 - POSSÍVEL SOB CERTAS CONDIÇÕES")
+                    {
+                        plr = "A";
+                    }
+                    else if(possibilidadeEvitarPerigo.Descricao == "P2 - PRATICAMENTE IMPOSSÍVEL")
+                    {
+                        plr = "B";
+                    }
+                }
+                else if(frequenciaExposicaoPerigo.Descricao == "F2 - FREQUENTE A CONTÍNUO E/OU TEMPO DE EXPOSIÇÃO LONGO")
+                {
+                    if (possibilidadeEvitarPerigo.Descricao == "P1 - POSSÍVEL SOB CERTAS CONDIÇÕES")
+                    {
+                        plr = "B";
+                    }
+                    else if (possibilidadeEvitarPerigo.Descricao == "P2 - PRATICAMENTE IMPOSSÍVEL")
+                    {
+                        plr = "C";
+                    }
+                }
+            }
+            else if(severidadeFerimento.Descricao == "S2 - FERIMENTO SÉRIO")
+            {
+                if (frequenciaExposicaoPerigo.Descricao == "F1 - RARO E RELATIVAMENTE FREQUENTE E/OU BAIXO TEMPO DE EXPOSIÇÃO")
+                {
+                    if (possibilidadeEvitarPerigo.Descricao == "P1 - POSSÍVEL SOB CERTAS CONDIÇÕES")
+                    {
+                        plr = "C";
+                        categoria = "1";
+                    }
+                    else if (possibilidadeEvitarPerigo.Descricao == "P2 - PRATICAMENTE IMPOSSÍVEL")
+                    {
+                        plr = "D";
+                        categoria = "2";
+                    }
+                }
+                else if (frequenciaExposicaoPerigo.Descricao == "F2 - FREQUENTE A CONTÍNUO E/OU TEMPO DE EXPOSIÇÃO LONGO")
+                {
+                    if (possibilidadeEvitarPerigo.Descricao == "P1 - POSSÍVEL SOB CERTAS CONDIÇÕES")
+                    {
+                        plr = "D";
+                        categoria = "3";
+                    }
+                    else if (possibilidadeEvitarPerigo.Descricao == "P2 - PRATICAMENTE IMPOSSÍVEL")
+                    {
+                        plr = "E";
+                        categoria = "4";
+                    }
+                }
+            }
+
+            foreach(var cat in descricaoCategoria)
+            {
+                if(cat.Descricao.Contains(categoria))
+                {
+                    categoriaRisco.DescricaoCategoria = cat;
+                }
+            }
+
+            categoriaRisco.SeveridadeFerimento = severidadeFerimento;
+            categoriaRisco.FrequenciaExposicaoPerigo = frequenciaExposicaoPerigo;
+            categoriaRisco.PossibilidadeEvitarPerigo = possibilidadeEvitarPerigo;
+
+            foreach(var pl in descricaoPerformanceLevel)
+            {
+                if (pl.Descricao.Contains(plr))
+                {
+                    performanceLevelRequerido.DescricaoPerformanceLevel = pl;
+                }
+            }
+
+            performanceLevelRequerido.SeveridadeFerimento = severidadeFerimento;
+            performanceLevelRequerido.FrequenciaExposicaoPerigo = frequenciaExposicaoPerigo;
+            performanceLevelRequerido.PossibilidadeEvitarPerigo = possibilidadeEvitarPerigo;
+
+            retorno.categoriaRisco = categoriaRisco;
+            retorno.performanceLevelRequerido = performanceLevelRequerido;
+
+            return retorno;
+        }
     }
 }
