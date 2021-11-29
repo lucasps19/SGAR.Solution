@@ -207,15 +207,16 @@ namespace SGAR.WebApi.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("/CalcularCategoriaPLr")]
-        public ActionResult<CategoriaPerformanceLevelRequeridoViewModel> CalcularCategoriaPLr(
-            SeveridadeFerimentoViewModel severidadeFerimento, 
-            FrequenciaExposicaoPerigoViewModel frequenciaExposicaoPerigo, 
-            PossibilidadeEvitarPerigoViewModel possibilidadeEvitarPerigo)
+        public ActionResult<CategoriaPerformanceLevelRequeridoViewModel> CalcularCategoriaPLr(CategoriaPerformanceLevelRequeridoViewModel objeto)
         {
             try
             {
+                SeveridadeFerimentoViewModel severidadeFerimento = objeto.categoriaRisco.SeveridadeFerimento;
+                FrequenciaExposicaoPerigoViewModel frequenciaExposicaoPerigo = objeto.categoriaRisco.FrequenciaExposicaoPerigo;
+                PossibilidadeEvitarPerigoViewModel possibilidadeEvitarPerigo = objeto.categoriaRisco.PossibilidadeEvitarPerigo;
+
                 return _mapper.Map<CategoriaPerformanceLevelRequeridoDto, CategoriaPerformanceLevelRequeridoViewModel>(_novoRiscoBll.CalcularCategoriaPLr(
                         _mapper.Map<SeveridadeFerimentoViewModel, SeveridadeFerimentoDto>(severidadeFerimento),
                         _mapper.Map<FrequenciaExposicaoPerigoViewModel, FrequenciaExposicaoPerigoDto>(frequenciaExposicaoPerigo),
