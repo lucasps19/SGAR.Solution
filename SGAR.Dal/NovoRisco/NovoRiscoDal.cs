@@ -92,24 +92,116 @@ namespace SGAR.Dal.NovoRisco
             return _contexto.DescricoesPerformanceLevel.ToList();
         }
 
-        public Risco InserirNovoRisco(Risco risco)
+        public HRNAntes InserirHrnAntes(HRNAntes hrnAntes)
         {
-            if(risco.ApreciacaoRisco != null)
+            _contexto.FaixasHRN.Attach(hrnAntes.FaixaHRN);
+            _contexto.NumerosPessoas.Attach(hrnAntes.NumeroPessoas);
+            _contexto.GrauPossiveisLesoes.Attach(hrnAntes.GrauPossivelLesao);
+            _contexto.FrequenciasExposicao.Attach(hrnAntes.FrequenciaExposicao);
+            _contexto.PossibilidadesOcorrencia.Attach(hrnAntes.PossibilidadeOcorrencia);
+
+            HRNAntes hrn = new HRNAntes()
             {
-                _contexto.ApreciacoesRisco.Attach(risco.ApreciacaoRisco);
-            }
-            
-            _contexto.CiclosDeVida.Attach(risco.CicloVida);
-            _contexto.Tarefas.Attach(risco.Tarefa);
-            _contexto.TiposGruposPerigo.Attach(risco.TipoGrupoPerigo);
-            _contexto.Danos.Attach(risco.Dano);
-            _contexto.RiscosABNT.Attach(risco.RiscoABNT12100);
+                IdFaixaHRN = hrnAntes.IdFaixaHRN,
+                IdNumeroPessoas = hrnAntes.IdNumeroPessoas,
+                IdGrauPossivelLesao = hrnAntes.IdGrauPossivelLesao,
+                IdFrequenciaExposicao = hrnAntes.IdFrequenciaExposicao,
+                IdPossibilidadeOcorrencia = hrnAntes.IdPossibilidadeOcorrencia
+            };
+
+            _contexto.HRNsAntes.Add(hrn);
+
+            _contexto.SaveChanges();
+
+            hrnAntes.Id = hrn.Id;
+
+            return hrnAntes;
+        }
+
+        public HRNDepois InserirHrnDepois(HRNDepois hrnDepois)
+        {
+            HRNDepois hrn = new HRNDepois()
+            {
+                IdFaixaHRN = hrnDepois.IdFaixaHRN,
+                IdNumeroPessoas = hrnDepois.IdNumeroPessoas,
+                IdGrauPossivelLesao = hrnDepois.IdGrauPossivelLesao,
+                IdFrequenciaExposicao = hrnDepois.IdFrequenciaExposicao,
+                IdPossibilidadeOcorrencia = hrnDepois.IdPossibilidadeOcorrencia
+            };
+
+            _contexto.HRNsDepois.Add(hrn);
+
+            _contexto.SaveChanges();
+
+            hrnDepois.Id = hrn.Id;
+
+            return hrnDepois;
+        }
+
+        public CategoriaRisco InserirCategoriaRisco(CategoriaRisco categoria)
+        {
+            CategoriaRisco cat = new CategoriaRisco()
+            {
+                IdDescricaoCategoria = categoria.IdDescricaoCategoria,
+                IdSeveridadeFerimento = categoria.IdSeveridadeFerimento,
+                IdFrequenciaExposicaoPerigo = categoria.IdFrequenciaExposicaoPerigo,
+                IdPossibilidadeEvitarPerigo = categoria.IdPossibilidadeEvitarPerigo
+            };
+
+            _contexto.CategoriasRiscos.Add(cat);
+
+            _contexto.SaveChanges();
+
+            categoria.Id = cat.Id;
+
+            return categoria;
+        }
+
+        public PerformanceLevelRequerido InserirPerformanceLevelRequerido(PerformanceLevelRequerido performanceLevelRequerido)
+        {
+            PerformanceLevelRequerido plr = new PerformanceLevelRequerido()
+            {
+                IdDescricaoPerformanceLevel = performanceLevelRequerido.IdDescricaoPerformanceLevel,
+                IdSeveridadeFerimento = performanceLevelRequerido.IdSeveridadeFerimento,
+                IdFrequenciaExposicaoPerigo = performanceLevelRequerido.IdFrequenciaExposicaoPerigo,
+                IdPossibilidadeEvitarPerigo = performanceLevelRequerido.IdFrequenciaExposicaoPerigo
+            };
+
+            _contexto.PerformanceLevelRequeridos.Add(plr);
+
+            _contexto.SaveChanges();
+
+            performanceLevelRequerido.Id = plr.Id;
+
+            return performanceLevelRequerido;
+        }
+
+        public Risco InserirNovoRisco(Risco novoRisco)
+        {
+            Risco risco = new Risco()
+            {
+                Atividade = novoRisco.Atividade,
+                Onde = novoRisco.Onde,
+                MedidaProtecaoSugerida = novoRisco.MedidaProtecaoSugerida,
+                IdAPreciacaoRisco = novoRisco.IdAPreciacaoRisco,
+                IdCicloVida = novoRisco.IdCicloVida,
+                IdTarefa = novoRisco.IdTarefa,
+                IdTipoGrupoPerigo = novoRisco.IdTipoGrupoPerigo,
+                IdRiscoABNT12100 = novoRisco.IdRiscoABNT12100,
+                IdDano = novoRisco.IdDano,
+                IdHRNAntes = novoRisco.HRNAntes.Id,
+                IdCategoriaRisco = novoRisco.CategoriaRisco.Id,
+                IdPerformanceLevelRequerido = novoRisco.PerformanceLevelRequerido.Id,
+                IdHRNDepois = novoRisco.HRNDepois.Id
+            };
 
             _contexto.Riscos.Add(risco);
 
             _contexto.SaveChanges();
 
-            return risco;
+            novoRisco.Id = risco.Id;
+
+            return novoRisco;
         }
     }
 }

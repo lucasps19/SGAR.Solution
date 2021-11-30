@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SGAR.Bll.EditarApreciacao;
 using SGAR.Bll.NovoRisco;
 using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Dto.Categoria_e_Performance_Level;
@@ -19,11 +20,13 @@ namespace SGAR.WebApi.Controllers
     public class NovoRiscoController : ControllerBase
     {
         private readonly NovoRiscoBll _novoRiscoBll;
+        private readonly EditarApreciacaoBll _editarApreciacaoBll;
         private readonly IMapper _mapper;
 
-        public NovoRiscoController(NovoRiscoBll novoRiscoBll, IMapper mapper)
+        public NovoRiscoController(NovoRiscoBll novoRiscoBll, EditarApreciacaoBll editarApreciacaoBll, IMapper mapper)
         {
             _novoRiscoBll = novoRiscoBll;
+            _editarApreciacaoBll = editarApreciacaoBll;
             _mapper = mapper;
         }
 
@@ -250,6 +253,8 @@ namespace SGAR.WebApi.Controllers
         {
             try
             {
+                risco.ApreciacaoRisco = _mapper.Map<ApreciacaoRiscoDto, ApreciacaoRiscoViewModel>(_editarApreciacaoBll.BuscarApreciacaoRisco(risco.IdAPreciacaoRisco));
+
                 return _mapper.Map<RiscoDto, RiscoViewModel>(_novoRiscoBll.InserirNovoRisco(_mapper.Map<RiscoViewModel, RiscoDto>(risco)));
             }
             catch (Exception ex)

@@ -310,6 +310,11 @@ namespace SGAR.Bll.NovoRisco
 
         public RiscoDto InserirNovoRisco(RiscoDto risco)
         {
+            risco.HRNAntes = _mapper.Map<HRNAntes, HRNAntesDto>(_novoRiscoDal.InserirHrnAntes(_mapper.Map<HRNAntesDto, HRNAntes>(risco.HRNAntes)));
+            risco.HRNDepois = _mapper.Map<HRNDepois, HRNDepoisDto>(_novoRiscoDal.InserirHrnDepois(_mapper.Map<HRNDepoisDto, HRNDepois>(risco.HRNDepois)));
+            risco.CategoriaRisco = _mapper.Map<CategoriaRisco, CategoriaRiscoDto>(_novoRiscoDal.InserirCategoriaRisco(_mapper.Map<CategoriaRiscoDto, CategoriaRisco>(risco.CategoriaRisco)));
+            risco.PerformanceLevelRequerido = _mapper.Map<PerformanceLevelRequerido, PerformanceLevelRequeridoDto>(_novoRiscoDal.InserirPerformanceLevelRequerido(_mapper.Map<PerformanceLevelRequeridoDto, PerformanceLevelRequerido>(risco.PerformanceLevelRequerido)));
+
             return _mapper.Map<Risco, RiscoDto>(_novoRiscoDal.InserirNovoRisco(_mapper.Map<RiscoDto, Risco>(risco)));
         }
     }
