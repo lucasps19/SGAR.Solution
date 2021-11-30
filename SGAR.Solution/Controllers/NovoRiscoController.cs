@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SGAR.Bll.NovoRisco;
+using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Dto.Categoria_e_Performance_Level;
 using SGAR.Dto.HRN;
 using SGAR.Dto.NR12100;
+using SGAR.WebApi.ViewModel.ApreciacaoRisco;
 using SGAR.WebApi.ViewModel.Categoria_e_Performance_Level;
 using SGAR.WebApi.ViewModel.HRN;
 using SGAR.WebApi.ViewModel.NR12100;
@@ -165,6 +167,20 @@ namespace SGAR.WebApi.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("/CalcularHrnDepois")]
+        public ActionResult<HRNDepoisViewModel> CalcularHrnDepois(HRNDepoisViewModel hrnDepois)
+        {
+            try
+            {
+                return _mapper.Map<HRNDepoisDto, HRNDepoisViewModel>(_novoRiscoBll.CalcularHrnDepois(_mapper.Map<HRNDepoisViewModel, HRNDepoisDto>(hrnDepois)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("/BuscarSeveridadesFerimento")]
         public ActionResult<List<SeveridadeFerimentoViewModel>> BuscarSeveridadesFerimento()
@@ -221,6 +237,20 @@ namespace SGAR.WebApi.Controllers
                         _mapper.Map<SeveridadeFerimentoViewModel, SeveridadeFerimentoDto>(severidadeFerimento),
                         _mapper.Map<FrequenciaExposicaoPerigoViewModel, FrequenciaExposicaoPerigoDto>(frequenciaExposicaoPerigo),
                         _mapper.Map<PossibilidadeEvitarPerigoViewModel, PossibilidadeEvitarPerigoDto>(possibilidadeEvitarPerigo)));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/InserirNovoRisco")]
+        public ActionResult<RiscoViewModel> InserirNovoRisco(RiscoViewModel risco)
+        {
+            try
+            {
+                return _mapper.Map<RiscoDto, RiscoViewModel>(_novoRiscoBll.InserirNovoRisco(_mapper.Map<RiscoViewModel, RiscoDto>(risco)));
             }
             catch (Exception ex)
             {

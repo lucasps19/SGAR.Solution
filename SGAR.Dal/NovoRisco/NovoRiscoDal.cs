@@ -1,4 +1,5 @@
 ﻿using SGAR.Model.Contexto;
+using SGAR.Model.Models;
 using SGAR.Model.Models.Categoria_e_Performance_Level;
 using SGAR.Model.Models.HRN;
 using SGAR.Model.Models.NR12100;
@@ -89,6 +90,26 @@ namespace SGAR.Dal.NovoRisco
         public List<DescricaoPerformanceLevel> BuscarDescricoesPerformanceLevel()
         {
             return _contexto.DescricoesPerformanceLevel.ToList();
+        }
+
+        public Risco InserirNovoRisco(Risco risco)
+        {
+            if(risco.ApreciacaoRisco != null)
+            {
+                _contexto.ApreciacoesRisco.Attach(risco.ApreciacaoRisco);
+            }
+            
+            _contexto.CiclosDeVida.Attach(risco.CicloVida);
+            _contexto.Tarefas.Attach(risco.Tarefa);
+            _contexto.TiposGruposPerigo.Attach(risco.TipoGrupoPerigo);
+            _contexto.Danos.Attach(risco.Dano);
+            _contexto.RiscosABNT.Attach(risco.RiscoABNT12100);
+
+            _contexto.Riscos.Add(risco);
+
+            _contexto.SaveChanges();
+
+            return risco;
         }
     }
 }
