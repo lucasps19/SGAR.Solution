@@ -17,7 +17,7 @@ namespace SGAR.Dal.EditarRisco
 
         public Risco BuscarRisco(int idRisco)
         {
-            var consulta = _contexto.Riscos.Where(o => o.IdAPreciacaoRisco == idRisco)
+            var consulta = _contexto.Riscos.Where(o => o.Id == idRisco)
                 .Select(o => new
                 {
                     o.Id,
@@ -25,7 +25,7 @@ namespace SGAR.Dal.EditarRisco
                     o.IdCicloVida,
                     o.IdTarefa,
                     o.Atividade,
-                    o.IdTipoGrupoPerigo,
+                    o.IdTipoGrupo
                     o.IdDano,
                     o.Onde,
                     o.IdRiscoABNT12100,
