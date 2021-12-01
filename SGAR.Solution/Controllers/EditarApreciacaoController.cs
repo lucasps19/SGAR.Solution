@@ -4,6 +4,7 @@ using SGAR.Bll.EditarApreciacao;
 using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.WebApi.ViewModel.ApreciacaoRisco;
 using System;
+using System.Collections.Generic;
 
 namespace SGAR.WebApi.Controllers
 {
@@ -53,6 +54,20 @@ namespace SGAR.WebApi.Controllers
                 return Unauthorized(ex.Message);
             }
 
+        }
+
+        [HttpGet]
+        [Route("/BuscarListaRiscos")]
+        public ActionResult<List<RiscoViewModel>> BuscarListaRiscos(int idApreciacao)
+        {
+            try
+            {
+                return _mapper.Map<List<RiscoDto>, List<RiscoViewModel>>(_editarApreciacaoBll.BuscarListaRiscos(idApreciacao));
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
         }
     }
 }

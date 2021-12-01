@@ -2,6 +2,7 @@
 using SGAR.Dal.EditarApreciacao;
 using SGAR.Dto.Apreciacao_de_Risco;
 using SGAR.Model.Models;
+using System.Collections.Generic;
 
 namespace SGAR.Bll.EditarApreciacao
 {
@@ -24,6 +25,11 @@ namespace SGAR.Bll.EditarApreciacao
         public ApreciacaoRiscoDto AtualizarApreciacaoRisco(ApreciacaoRiscoDto apreciacaoRisco)
         {
             return _mapper.Map<ApreciacaoRisco, ApreciacaoRiscoDto>(_editarApreciacaoDal.AtualizarApreciacaoRisco(_mapper.Map<ApreciacaoRiscoDto, ApreciacaoRisco>(apreciacaoRisco)));
+        }
+
+        public List<RiscoDto> BuscarListaRiscos(int idApreciacao)
+        {
+            return _mapper.Map<List<Risco>, List<RiscoDto>>(_editarApreciacaoDal.BuscarListaRiscos(idApreciacao));
         }
     }
 }
