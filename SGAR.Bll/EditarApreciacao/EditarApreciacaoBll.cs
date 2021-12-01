@@ -27,9 +27,35 @@ namespace SGAR.Bll.EditarApreciacao
             return _mapper.Map<ApreciacaoRisco, ApreciacaoRiscoDto>(_editarApreciacaoDal.AtualizarApreciacaoRisco(_mapper.Map<ApreciacaoRiscoDto, ApreciacaoRisco>(apreciacaoRisco)));
         }
 
-        public List<RiscoDto> BuscarListaRiscos(int idApreciacao)
+        public List<TabelaRiscosDto> BuscarListaRiscos(int idApreciacao)
         {
-            return _mapper.Map<List<Risco>, List<RiscoDto>>(_editarApreciacaoDal.BuscarListaRiscos(idApreciacao));
+            List<RiscoDto> listaRiscos = _mapper.Map<List<Risco>, List<RiscoDto>>(_editarApreciacaoDal.BuscarListaRiscos(idApreciacao));
+
+            List<TabelaRiscosDto> retorno = new List<TabelaRiscosDto>();
+
+            foreach(var risco in listaRiscos)
+            {
+                retorno.Add(new TabelaRiscosDto()
+                {
+                    Id = risco.Id,
+                    CicloVida = risco.CicloVida.Descricao,
+                    Tarefa = risco.Tarefa.Descricao,
+                    Atividade = risco.Atividade,
+                    TipoGrupoPerigo = risco.TipoGrupoPerigo.Descricao,
+                    Dano = risco.Dano.Descricao,
+                    Onde = risco.Onde,
+                    RiscoABNT12100 = risco.RiscoABNT12100.Descricao,
+                    MedidaProtecaoSugerida = risco.MedidaProtecaoSugerida,
+                    ValorCalculadoHRNAntes = risco.HRNAntes.ValorCalculado,
+                    FaixaHRNAntes = risco.HRNAntes.FaixaHRN.Descricao,
+                    Categoria = risco.CategoriaRisco.DescricaoCategoria.Descricao,
+                    PerformanceLevelRequerido = risco.PerformanceLevelRequerido.DescricaoPerformanceLevel.Descricao,
+                    ValorCalculadoHRNDepois = risco.HRNDepois.ValorCalculado,
+                    FaixaHRNDepois = risco.HRNDepois.FaixaHRN.Descricao
+                });
+            }
+
+            return retorno;
         }
     }
 }

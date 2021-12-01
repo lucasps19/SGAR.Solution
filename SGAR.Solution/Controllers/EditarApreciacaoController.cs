@@ -58,11 +58,11 @@ namespace SGAR.WebApi.Controllers
 
         [HttpGet]
         [Route("/BuscarListaRiscos")]
-        public ActionResult<List<RiscoViewModel>> BuscarListaRiscos(int idApreciacao)
+        public ActionResult<List<TabelaRiscosViewModel>> BuscarListaRiscos(int idApreciacao)
         {
             try
             {
-                return _mapper.Map<List<RiscoDto>, List<RiscoViewModel>>(_editarApreciacaoBll.BuscarListaRiscos(idApreciacao));
+                return _mapper.Map<List<TabelaRiscosDto>, List<TabelaRiscosViewModel>>(_editarApreciacaoBll.BuscarListaRiscos(idApreciacao));
             }
             catch (Exception ex)
             {

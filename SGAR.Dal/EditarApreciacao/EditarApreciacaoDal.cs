@@ -70,6 +70,11 @@ namespace SGAR.Dal.EditarApreciacao
 
             foreach(var risco in lista)
             {
+                risco.HRNAntes.FaixaHRN = _contexto.FaixasHRN.Where(o => o.Id == risco.HRNAntes.IdFaixaHRN).FirstOrDefault();
+                risco.HRNDepois.FaixaHRN = _contexto.FaixasHRN.Where(o => o.Id == risco.HRNDepois.IdFaixaHRN).FirstOrDefault();
+                risco.CategoriaRisco.DescricaoCategoria = _contexto.DescricoesCategorias.Where(o => o.Id == risco.CategoriaRisco.IdDescricaoCategoria).FirstOrDefault();
+                risco.PerformanceLevelRequerido.DescricaoPerformanceLevel = _contexto.DescricoesPerformanceLevel.Where(o => o.Id == risco.PerformanceLevelRequerido.IdDescricaoPerformanceLevel).FirstOrDefault();
+
                 listaRiscos.Add(new Risco()
                 {
                     Id = risco.Id,
