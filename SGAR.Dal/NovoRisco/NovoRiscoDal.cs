@@ -94,19 +94,14 @@ namespace SGAR.Dal.NovoRisco
 
         public HRNAntes InserirHrnAntes(HRNAntes hrnAntes)
         {
-            _contexto.FaixasHRN.Attach(hrnAntes.FaixaHRN);
-            _contexto.NumerosPessoas.Attach(hrnAntes.NumeroPessoas);
-            _contexto.GrauPossiveisLesoes.Attach(hrnAntes.GrauPossivelLesao);
-            _contexto.FrequenciasExposicao.Attach(hrnAntes.FrequenciaExposicao);
-            _contexto.PossibilidadesOcorrencia.Attach(hrnAntes.PossibilidadeOcorrencia);
-
             HRNAntes hrn = new HRNAntes()
             {
                 IdFaixaHRN = hrnAntes.IdFaixaHRN,
                 IdNumeroPessoas = hrnAntes.IdNumeroPessoas,
                 IdGrauPossivelLesao = hrnAntes.IdGrauPossivelLesao,
                 IdFrequenciaExposicao = hrnAntes.IdFrequenciaExposicao,
-                IdPossibilidadeOcorrencia = hrnAntes.IdPossibilidadeOcorrencia
+                IdPossibilidadeOcorrencia = hrnAntes.IdPossibilidadeOcorrencia,
+                ValorCalculado = hrnAntes.ValorCalculado
             };
 
             _contexto.HRNsAntes.Add(hrn);
@@ -126,7 +121,8 @@ namespace SGAR.Dal.NovoRisco
                 IdNumeroPessoas = hrnDepois.IdNumeroPessoas,
                 IdGrauPossivelLesao = hrnDepois.IdGrauPossivelLesao,
                 IdFrequenciaExposicao = hrnDepois.IdFrequenciaExposicao,
-                IdPossibilidadeOcorrencia = hrnDepois.IdPossibilidadeOcorrencia
+                IdPossibilidadeOcorrencia = hrnDepois.IdPossibilidadeOcorrencia,
+                ValorCalculado = hrnDepois.ValorCalculado
             };
 
             _contexto.HRNsDepois.Add(hrn);
