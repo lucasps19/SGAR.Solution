@@ -25,7 +25,7 @@ namespace SGAR.Dal.EditarRisco
                     o.IdCicloVida,
                     o.IdTarefa,
                     o.Atividade,
-                    o.IdTipoGrupo
+                    o.IdTipoGrupoPerigo,
                     o.IdDano,
                     o.Onde,
                     o.IdRiscoABNT12100,
