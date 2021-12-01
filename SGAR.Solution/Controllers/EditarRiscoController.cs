@@ -68,7 +68,7 @@ namespace SGAR.WebApi.Controllers
 
         [HttpGet]
         [Route("/BuscarCatPLr")]
-        public ActionResult<CategoriaPerformanceLevelRequeridoViewModel> BuscBuscarCategoriaPerformanceLevelRequeridoarHRNDepois(int idCategoria, int idPlr)
+        public ActionResult<CategoriaPerformanceLevelRequeridoViewModel> BuscarCategoriaPerformanceLevelRequerido(int idCategoria, int idPlr)
         {
             try
             {
